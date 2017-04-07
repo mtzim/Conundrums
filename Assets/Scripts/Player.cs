@@ -2,19 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 public class Player : MonoBehaviour {
+    public Game_Manager manager;
+    public GameObject dice;             //instantiate when able to jump
+    public float thrust = 95f;
+    public int player_num;
+
     private const float step = .25f;
     private Rigidbody rb;
-
-    //these managed by Game_Manager and Player
     private bool turn = false;          //for being able to move available steps
     private bool can_jump = true;       //for hitting the dice
     private int steps_can_move = 0;
-    public Game_Manager manager;
-    public GameObject dice;             //instantiate when able to jump
-
-    public float thrust = 95f;
     private bool dice_made = false;
     private Dice current_dice;
+    private bool input_clear = false;
+
 
     void Start () {
         rb = GetComponent<Rigidbody>();
@@ -42,28 +43,40 @@ public class Player : MonoBehaviour {
     }
 
     private void movement() {
-        if (Input.GetButtonDown("Up")) {
-            Debug.Log("up");
-            transform.Translate(Vector3.forward);
-            current_dice.transform.Translate(Vector3.forward);
-            steps_can_move--;
-            current_dice.step_made();
+        if(Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical") == 0) {
+            input_clear = true;
         }
-        else if (Input.GetButtonDown("Down")) {
-            Debug.Log("down");
-            transform.Rotate(180f * Vector3.up);
-            current_dice.transform.Rotate(180f * Vector3.up);
+        if (input_clear) {
+            float vert = Input.GetAxis("Vertical");
+            float hori = Input.GetAxis("Horizontal");
+            if (vert > 0) {
+                input_clear = false;
+                Debug.Log("up");
+                transform.Translate(Vector3.forward);
+                current_dice.transform.Translate(Vector3.forward);
+                steps_can_move--;
+                current_dice.step_made();
+            }
+            else if(vert < 0) {
+                input_clear = false;
+                Debug.Log("down");
+                transform.Rotate(180f * Vector3.up);
+                current_dice.transform.Rotate(180f * Vector3.up);
+            }
+            else if (hori < 0) {
+                input_clear = false;
+                Debug.Log("left");
+                transform.Rotate(90f * -Vector3.up);
+                current_dice.transform.Rotate(90f * -Vector3.up);
+            }
+            else if (hori > 0) {
+                input_clear = false;
+                Debug.Log("right");
+                transform.Rotate(90f * Vector3.up);
+                current_dice.transform.Rotate(90f * Vector3.up);
+            }
         }
-        else if (Input.GetButtonDown("Left")) {
-            Debug.Log("left");
-            transform.Rotate(90f * -Vector3.up);
-            current_dice.transform.Rotate(90f * -Vector3.up);
-        }
-        else if (Input.GetButtonDown("Right")) {
-            Debug.Log("right");
-            transform.Rotate(90f * Vector3.up);
-            current_dice.transform.Rotate(90f * Vector3.up);
-        }
+
         if (steps_can_move <= 0)
             turn = false;
     }
