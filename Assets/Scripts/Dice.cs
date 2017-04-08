@@ -34,8 +34,7 @@ public class Dice : MonoBehaviour {
     void OnTriggerEnter(Collider col) {
         if (col.tag == "Player") {
             change = false;
-            col.gameObject.GetComponent<Player>().set_turn(++i);
-            i--;
+            col.gameObject.GetComponent<Player>().steps_can_move = i+1;
         }
     }
 
