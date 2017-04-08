@@ -62,8 +62,7 @@ public class Player : MonoBehaviour {
         if (input_clear) {
             float vert = Input.GetAxis("Vertical" + player_num);
             float hori = Input.GetAxis("Horizontal" + player_num);
-            if (vert > 0) {
-                Debug.Log(minigame_prob);
+            if (vert > 0 && forward_is_clear()) {
                 input_clear = false;
                 transform.Translate(Vector3.forward);
                 current_dice.transform.Translate(Vector3.forward);
@@ -101,6 +100,24 @@ public class Player : MonoBehaviour {
         if(collide.tag == "Dice") {
             current_dice = collide.GetComponent<Dice>();
         }
+        else if(collide.tag == "Ladder") {
+
+        }
+    }
+
+    private bool forward_is_clear() {
+        bool is_clear = true;
+        Ray ray = new Ray(transform.position, transform.forward);
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, transform.forward, out hit)) {
+            if(hit.distance < 1.5f) {
+                if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Blocking")) {
+                    is_clear = false;
+                }
+            }
+
+        }
+        return is_clear;
     }
 
     public void set_player_num(int num) {
