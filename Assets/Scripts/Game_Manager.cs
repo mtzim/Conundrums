@@ -4,8 +4,11 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Game_Manager : MonoBehaviour {
-    public Player[] players;
-    private int turn = 0;
+    public int num_of_players;
+    public int minigame_probability;
+    public GameObject player_prefab;
+
+    private List<GameObject> players = new List<GameObject>();
     private int current_turn = 0;
 
     void Awake() {
@@ -13,19 +16,27 @@ public class Game_Manager : MonoBehaviour {
     }
 
 	void Start() {
-        players[current_turn].turn = true;
+        GameObject init;
+        for (int i = 0; i < num_of_players; i++) {
+            init = Instantiate(player_prefab) as GameObject;
+            init.GetComponent<Player>().set_player_num(i);
+            init.GetComponent<Player>().set_turn(false);
+            init.gameObject.GetComponent<Player>().minigame_prob = minigame_probability;
+            init.gameObject.SetActive(false);
+            players.Add(init);
+        }
         players[current_turn].gameObject.SetActive(true);
+        players[current_turn].gameObject.GetComponent<Player>().set_turn(true);
     }
 	
 	void Update () {
-		if(players[current_turn].turn == false) {
+		if(!players[current_turn].gameObject.GetComponent<Player>().get_turn()) {
             current_turn++;
-            if (current_turn == players.Length) {
+            if (current_turn == players.Count) {
                 current_turn = 0;
-                SceneManager.LoadScene(1);
             }
-            players[current_turn].turn = true;
             players[current_turn].gameObject.SetActive(true);
+            players[current_turn].gameObject.GetComponent<Player>().set_turn(true);
         }
 	}
 }

@@ -1,14 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
+
 public class Player : MonoBehaviour {
     public Game_Manager manager;
     public GameObject dice;             //instantiate when able to jump
     public float thrust = 95f;
-    public int player_num;
-    public bool turn;          //for being able to move available steps
     public int steps_can_move;
+    public int minigame_prob = 10;
 
+    private bool turn;          //for being able to move available steps
+    private int player_num;
     private const float step = .25f;
     private Rigidbody rb;
     private bool can_jump = true;       //for hitting the dice
@@ -53,20 +56,22 @@ public class Player : MonoBehaviour {
     }
 
     private void movement() {
-        Debug.Log(player_num);
         if (Input.GetAxis("Horizontal" + player_num) == 0 && Input.GetAxis("Vertical" + player_num) == 0) {
             input_clear = true;
         }
         if (input_clear) {
             float vert = Input.GetAxis("Vertical" + player_num);
             float hori = Input.GetAxis("Horizontal" + player_num);
-            Debug.Log(vert);
             if (vert > 0) {
+                Debug.Log(minigame_prob);
                 input_clear = false;
                 transform.Translate(Vector3.forward);
                 current_dice.transform.Translate(Vector3.forward);
                 steps_can_move--;
                 current_dice.step_made();
+                if (Random.value * minigame_prob > 90) {
+                    //initiate a minigame scene
+                }
             }
             else if(vert < 0) {
                 input_clear = false;
@@ -96,5 +101,17 @@ public class Player : MonoBehaviour {
         if(collide.tag == "Dice") {
             current_dice = collide.GetComponent<Dice>();
         }
+    }
+
+    public void set_player_num(int num) {
+        player_num = num;
+    }
+
+    public bool get_turn() {
+        return turn;
+    }
+
+    public void set_turn(bool val) {
+        turn = val;
     }
 }
