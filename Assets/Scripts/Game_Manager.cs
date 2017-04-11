@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
 public class Game_Manager : MonoBehaviour {
     public int num_of_players;
     public int minigame_probability;
     public GameObject player_prefab;
+    public int num_of_minigames;
 
     private List<GameObject> players = new List<GameObject>();
     private int current_turn = 0;
@@ -30,7 +32,14 @@ public class Game_Manager : MonoBehaviour {
     }
 	
 	void Update () {
-		if(!players[current_turn].gameObject.GetComponent<Player>().get_turn()) {
+        if (players[current_turn].gameObject.GetComponent<Player>().load_minigame()) {
+            players[current_turn].gameObject.GetComponent<Player>().close_minigame();
+            for (int i = 0; i < players.Count; i++) {
+                players[i].gameObject.SetActive(false);
+            }
+            pick_minigame();
+        }
+        if (!players[current_turn].gameObject.GetComponent<Player>().get_turn()) {
             current_turn++;
             if (current_turn == players.Count) {
                 current_turn = 0;
@@ -39,4 +48,17 @@ public class Game_Manager : MonoBehaviour {
             players[current_turn].gameObject.GetComponent<Player>().set_turn(true);
         }
 	}
+
+    void pick_minigame() {
+        int choice = (int)(Random.value * 100 % num_of_minigames);
+        //SceneManager.LoadScene(choice);
+    }
+
+    void return_from_minigame() {
+
+    }
+
+    void store_player_state() {
+
+    }
 }
