@@ -19,6 +19,7 @@ public class Player : MonoBehaviour {
     private Dice current_dice;
     private bool input_clear = false;
     private bool can_move = false;
+    private bool minigame = false;
 
     void Awake() {
         DontDestroyOnLoad(transform.gameObject);
@@ -27,9 +28,7 @@ public class Player : MonoBehaviour {
     void Start () {
         rb = GetComponent<Rigidbody>();
         steps_can_move = 0;
-        foreach(string e in Input.GetJoystickNames()) {
-            Debug.Log(e);
-        }
+        Debug.Log(player_num);
     }
 	
 	void Update () {
@@ -38,6 +37,7 @@ public class Player : MonoBehaviour {
         }
         //means turn to dice jump
         if (turn && can_jump) {
+            Debug.Log("can jump" + player_num);
             if (!dice_made) {
                 GameObject inst = Instantiate(dice) as GameObject;
                 Vector3 pos = new Vector3(transform.position.x, transform.position.y + .75f, transform.position.z);
@@ -47,6 +47,7 @@ public class Player : MonoBehaviour {
             }
             //need to add floor check so can't repeatedly jump
             if (Input.GetButtonDown("Jump" + player_num)) {
+                Debug.Log("jump");
                 rb.AddForce(transform.up * thrust);
                 can_jump = false;
                 can_move = true;
@@ -69,7 +70,7 @@ public class Player : MonoBehaviour {
                 steps_can_move--;
                 current_dice.step_made();
                 if (Random.value * minigame_prob > 90) {
-                    //initiate a minigame scene
+                    minigame = true;
                 }
             }
             else if(vert < 0) {
@@ -101,7 +102,6 @@ public class Player : MonoBehaviour {
             current_dice = collide.GetComponent<Dice>();
         }
         else if(collide.tag == "Ladder") {
-
         }
     }
 
@@ -113,9 +113,13 @@ public class Player : MonoBehaviour {
             if(hit.distance < 1.5f) {
                 if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Blocking")) {
                     is_clear = false;
+                    if(hit.collider.gameObject.tag == "Ladder") {
+                        transform.position = new Vector3(transform.position.x, transform.position.y + 5, transform.position.z);
+                        current_dice.transform.position = new Vector3(current_dice.transform.position.x, current_dice.transform.position.y + 5, current_dice.transform.position.z);
+                        steps_can_move--;
+                    }
                 }
             }
-
         }
         return is_clear;
     }
@@ -130,5 +134,13 @@ public class Player : MonoBehaviour {
 
     public void set_turn(bool val) {
         turn = val;
+    }
+
+    public bool load_minigame() {
+        return minigame;
+    }
+
+    public void close_minigame() {
+        minigame = false;
     }
 }
