@@ -43,6 +43,5 @@ public class Dice : MonoBehaviour {
             Destroy(this.gameObject);
         else
             rend.material.mainTexture = number[--i];
-
     }
 }
