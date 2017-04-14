@@ -22,7 +22,6 @@
     </folder>
     <folder id="6" name="Hair">
         <file id="0" name="Hair/Link_Front.png" width="924" height="1273" pivot_x="0" pivot_y="1"/>
-        <file id="1" name="Hair/Link_Back.png" width="945" height="1484" pivot_x="0" pivot_y="1"/>
     </folder>
     <entity id="0" name="entity_000">
         <obj_info name="bone_000" type="bone" w="594.491" h="10"/>
@@ -57,10 +56,8 @@
                     <object_ref id="6" parent="8" timeline="5" key="0" z_index="6"/>
                     <object_ref id="7" parent="1" timeline="2" key="0" z_index="7"/>
                     <object_ref id="8" parent="2" timeline="1" key="0" z_index="8"/>
-                    <object_ref id="9" parent="9" timeline="21" key="0" z_index="9"/>
-                    <object_ref id="10" parent="9" timeline="0" key="0" z_index="10"/>
-                    <object_ref id="11" parent="9" timeline="20" key="0" z_index="11"/>
-                    <object_ref id="12" parent="9" timeline="22" key="0" z_index="12"/>
+                    <object_ref id="9" parent="9" timeline="0" key="0" z_index="9"/>
+                    <object_ref id="10" parent="9" timeline="20" key="0" z_index="10"/>
                 </key>
                 <key id="1" time="300">
                     <bone_ref id="0" timeline="10" key="1"/>
@@ -167,7 +164,7 @@
             </timeline>
             <timeline id="2" name="FrontUpperArm">
                 <key id="0" spin="0">
-                    <object folder="1" file="0" x="1.407407" y="-0.962963"/>
+                    <object folder="1" file="0" x="1.407407" y="-0.962963" angle="0"/>
                 </key>
             </timeline>
             <timeline id="3" name="BackUpperArm_000">
@@ -303,16 +300,6 @@
             <timeline id="20" name="Eyes">
                 <key id="0" spin="0">
                     <object folder="2" file="1" x="436.91268" y="-195.052405" angle="181.083982"/>
-                </key>
-            </timeline>
-            <timeline id="21" name="Link_Back">
-                <key id="0" spin="0">
-                    <object folder="6" file="1" x="984.191441" y="-1097.344231" angle="178.754973"/>
-                </key>
-            </timeline>
-            <timeline id="22" name="Link_Front">
-                <key id="0" spin="0">
-                    <object folder="6" file="0" x="945.517314" y="-655.02018" angle="178.754973"/>
                 </key>
             </timeline>
         </animation>
