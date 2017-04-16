@@ -9,16 +9,14 @@ public class Rolling : MonoBehaviour {
     public int player_num;
     public float max_speed;
 
-	// Use this for initialization
 	void Start () {
         rb = GetComponent<Rigidbody>();
 	}
 	
-	// Update is called once per frame
 	void FixedUpdate () {
         float vert = Input.GetAxis("Vertical" + player_num);
         float hori = Input.GetAxis("Horizontal" + player_num);
-        Vector3 movement = new Vector3(hori, .0f, vert);
+        Vector3 movement = new Vector3(hori, 0.0f, vert);
         rb.AddForce(movement * thrust * Time.deltaTime);
         if(rb.velocity.magnitude > max_speed){
             rb.velocity = rb.velocity.normalized * max_speed;
@@ -32,5 +30,10 @@ public class Rolling : MonoBehaviour {
             direction = direction.normalized;
             collision.gameObject.GetComponent<Rigidbody>().AddForce(direction*bounce_force);
         }
+        else if(collision.gameObject.tag == "Lava") {
+
+        }
     }
+
+
 }
