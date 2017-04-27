@@ -8,7 +8,6 @@ public class Player : MonoBehaviour {
     public GameObject dice;             //instantiate when able to jump
     public float thrust = 95f;
     public int steps_can_move;
-    public int minigame_prob = 10;
 
     private bool turn;          //for being able to move available steps
     private int player_num;
@@ -19,7 +18,6 @@ public class Player : MonoBehaviour {
     private Dice current_dice;
     private bool input_clear = false;
     private bool can_move = false;
-    private bool minigame = false;
 
     void Awake() {
         DontDestroyOnLoad(transform.gameObject);
@@ -28,7 +26,6 @@ public class Player : MonoBehaviour {
     void Start () {
         rb = GetComponent<Rigidbody>();
         steps_can_move = 0;
-        Debug.Log(player_num);
     }
 	
 	void Update () {
@@ -37,7 +34,6 @@ public class Player : MonoBehaviour {
         }
         //means turn to dice jump
         if (turn && can_jump) {
-            Debug.Log("can jump" + player_num);
             if (!dice_made) {
                 GameObject inst = Instantiate(dice) as GameObject;
                 Vector3 pos = new Vector3(transform.position.x, transform.position.y + .75f, transform.position.z);
@@ -47,7 +43,6 @@ public class Player : MonoBehaviour {
             }
             //need to add floor check so can't repeatedly jump
             if (Input.GetButtonDown("Jump" + player_num)) {
-                Debug.Log("jump");
                 rb.AddForce(transform.up * thrust);
                 can_jump = false;
                 can_move = true;
@@ -69,9 +64,6 @@ public class Player : MonoBehaviour {
                 current_dice.transform.Translate(Vector3.forward);
                 steps_can_move--;
                 current_dice.step_made();
-                if (Random.value * minigame_prob > 90) {
-                    minigame = true;
-                }
             }
             else if(vert < 0) {
                 input_clear = false;
@@ -134,13 +126,5 @@ public class Player : MonoBehaviour {
 
     public void set_turn(bool val) {
         turn = val;
-    }
-
-    public bool load_minigame() {
-        return minigame;
-    }
-
-    public void close_minigame() {
-        minigame = false;
     }
 }
