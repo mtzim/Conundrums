@@ -29,12 +29,13 @@ public class Player : MonoBehaviour {
     }
 	
 	void Update () {
+        gameObject.GetComponentInChildren<Camera>().enabled = turn;
         if (can_move && steps_can_move > 0) {
             movement();
         }
         //means turn to dice jump
         if (turn && can_jump) {
-            if (!dice_made) {
+            if (!dice_made) {                
                 GameObject inst = Instantiate(dice) as GameObject;
                 Vector3 pos = new Vector3(transform.position.x, transform.position.y + .75f, transform.position.z);
                 inst.transform.position = pos;
@@ -85,7 +86,7 @@ public class Player : MonoBehaviour {
         if (steps_can_move <= 0) {
             turn = false;
             dice_made = can_move = false;
-            can_jump = true;
+            can_jump = true;            
         }
     }
 
