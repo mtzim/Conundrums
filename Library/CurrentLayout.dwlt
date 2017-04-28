@@ -91,7 +91,7 @@ MonoBehaviour:
     y: 0
     width: 1904
     height: 981
-  m_MinSize: {x: 950, y: 300}
+  m_MinSize: {x: 950, y: 521}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &5
 MonoBehaviour:
@@ -179,8 +179,8 @@ MonoBehaviour:
     y: 0
     width: 1093
     height: 931
-  m_MinSize: {x: 202, y: 442}
-  m_MaxSize: {x: 4002, y: 8042}
+  m_MinSize: {x: 202, y: 421}
+  m_MaxSize: {x: 4002, y: 8021}
   vertical: 1
   controlID: 48
 --- !u!114 &9
@@ -331,15 +331,15 @@ MonoBehaviour:
   m_DepthBufferBits: 0
   m_Pos:
     serializedVersion: 2
-    x: 0
-    y: 677
-    width: 1100
-    height: 341
+    x: 8
+    y: 675
+    width: 1091
+    height: 335
   m_ViewPositions:
     m_KeySerializationHelper:
     - {fileID: 1107573886243038326, guid: be42170ed2a1b56458591a548ee781ca, type: 2}
     m_ValueSerializationHelper:
-    - {x: 610, y: 244.6}
+    - {x: 604.60004, y: 301}
   m_PreviewAnimator: {fileID: 0}
   m_AnimatorController: {fileID: 9100000, guid: be42170ed2a1b56458591a548ee781ca,
     type: 2}
@@ -461,14 +461,14 @@ MonoBehaviour:
     width: 1091
     height: 335
   m_SceneLighting: 1
-  lastFramingTime: 69.00097012164908
+  lastFramingTime: 17.659836265799374
   m_2DMode: 0
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 0.000038255184, y: 5.299999, z: 0.99995196}
+    m_Target: {x: -0.000037520702, y: 0.2999961, z: -1.0000489}
     speed: 2
-    m_Value: {x: 0.000038255184, y: 5.299999, z: 0.99995196}
+    m_Value: {x: -0.000037520702, y: 0.2999961, z: -1.0000489}
   m_RenderMode: 2
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -495,9 +495,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: -0.047567636, y: 0.3625001, z: -0.018371467, w: -0.9305877}
   m_Size:
-    m_Target: 1.5135144
+    m_Target: 1.5134842
     speed: 2
-    m_Value: 1.5135144
+    m_Value: 1.5134842
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -562,9 +562,9 @@ MonoBehaviour:
     height: 393
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 662f0000
-    m_LastClickedID: 12134
-    m_ExpandedIDs: d8fbfffff4ffffff000000005c2f0000762f0000
+    m_SelectedIDs: 1e300000
+    m_LastClickedID: 0
+    m_ExpandedIDs: 2ce0ffff54e0ffff56e0fffff6e0ffffd8fbfffff4ffffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
