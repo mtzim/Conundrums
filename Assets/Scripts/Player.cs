@@ -9,6 +9,7 @@ public class Player : MonoBehaviour {
     public float thrust = 95f;
     public int steps_can_move;
 
+    private int floor = 0;
     private Board_Generator board;
     private bool turn;          //for being able to move available steps
     private int player_num;
@@ -66,7 +67,7 @@ public class Player : MonoBehaviour {
                 current_dice.transform.Translate(Vector3.forward);
                 steps_can_move--;
                 current_dice.step_made();
-                board.addToBoard();
+                board.addToBoard(floor);
             }
             else if(vert < 0) {
                 input_clear = false;
@@ -97,8 +98,14 @@ public class Player : MonoBehaviour {
             current_dice = collide.GetComponent<Dice>();
         }
         else if(collide.tag == "Ladder") {
+            floor += 5;
+            board.new_floor(floor);
+            transform.position = new Vector3(transform.position.x, transform.position.y + 5, transform.position.z);
+            current_dice.transform.position = new Vector3(current_dice.transform.position.x, current_dice.transform.position.y + 5, current_dice.transform.position.z);
+            steps_can_move--;
         }
     }
+
 
     private bool forward_is_clear() {
         bool is_clear = true;
@@ -106,14 +113,8 @@ public class Player : MonoBehaviour {
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.forward, out hit)) {
             if(hit.distance < 1.5f) {
-                if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Blocking")) {
+                if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Blocking"))
                     is_clear = false;
-                    if(hit.collider.gameObject.tag == "Ladder") {
-                        transform.position = new Vector3(transform.position.x, transform.position.y + 5, transform.position.z);
-                        current_dice.transform.position = new Vector3(current_dice.transform.position.x, current_dice.transform.position.y + 5, current_dice.transform.position.z);
-                        steps_can_move--;
-                    }
-                }
             }
         }
         return is_clear;
