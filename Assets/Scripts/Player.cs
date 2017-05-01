@@ -107,18 +107,16 @@ public class Player : MonoBehaviour {
         }
     }
 
-
     private bool forward_is_clear() {
-        bool is_clear = true;
         Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.forward, out hit)) {
             if(hit.distance < 1.5f) {
                 if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Blocking"))
-                    is_clear = false;
+                    return false;
             }
         }
-        return is_clear;
+        return true;
     }
 
     public void set_player_num(int num) {
