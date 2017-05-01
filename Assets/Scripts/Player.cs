@@ -9,6 +9,7 @@ public class Player : MonoBehaviour {
     public float thrust = 95f;
     public int steps_can_move;
 
+    private Board_Generator board;
     private bool turn;          //for being able to move available steps
     private int player_num;
     private const float step = .25f;
@@ -65,6 +66,7 @@ public class Player : MonoBehaviour {
                 current_dice.transform.Translate(Vector3.forward);
                 steps_can_move--;
                 current_dice.step_made();
+                board.addToBoard();
             }
             else if(vert < 0) {
                 input_clear = false;
@@ -127,5 +129,9 @@ public class Player : MonoBehaviour {
 
     public void set_turn(bool val) {
         turn = val;
+    }
+
+    public void set_board_manager(Board_Generator manage) {
+        board = manage;
     }
 }

@@ -9,19 +9,22 @@ public class Game_Manager : MonoBehaviour {
     public int minigame_probability;
     public GameObject player_prefab;
     public string[] minigame_scene_names;
-    private List<GameObject> players = new List<GameObject>();
-    private int current_turn = 0;
-
+    public List<GameObject> players { get; private set; }
+    public int current_turn { get; private set; }
+    private Board_Generator generator;
     void Awake() {
         DontDestroyOnLoad(transform.gameObject);
     }
 
 	void Start() {
+        players = new List<GameObject>();
+        generator = GetComponent<Board_Generator>();
         GameObject init;
         for (int i = 0; i < num_of_players; i++) {
             init = Instantiate(player_prefab) as GameObject;
             init.GetComponent<Player>().set_player_num(i);
             init.GetComponent<Player>().set_turn(false);
+            init.GetComponent<Player>().set_board_manager(generator);
             init.gameObject.SetActive(false);
             players.Add(init);
         }
@@ -30,7 +33,6 @@ public class Game_Manager : MonoBehaviour {
     }
 	
 	void Update () {
-        Debug.Log(Random.value * 100);
         if (!players[current_turn].gameObject.GetComponent<Player>().get_turn()) {
             current_turn++;
             if (current_turn == players.Count) {
