@@ -33,8 +33,8 @@ public class Board_Generator : MonoBehaviour {
 
     public void board_setup() {
         boardHolder = new GameObject("Board").transform;
-        for (int x = 0; x < columns; x++) {
-            for (int z = 0; z < rows; z++) {
+        for (int x = -5; x < columns; x++) {
+            for (int z = -5; z < rows; z++) {
                 GameObject toInstantiate = floorTiles[Random.Range(0, floorTiles.Length)];
                 GameObject instance = Instantiate(toInstantiate, new Vector3(x, 0f, z), Quaternion.identity) as GameObject;
                 Renderer rend = instance.gameObject.GetComponent<Renderer>();
@@ -86,8 +86,8 @@ public class Board_Generator : MonoBehaviour {
 
     public void new_floor(int floor) {
         Transform current_player = game.players[game.current_turn].transform;
-        for (int x = 0; x < columns; x++) {
-            for (int z = 0; z < rows; z++) {
+        for (int x = -5; x < columns; x++) {
+            for (int z = -5; z < rows; z++) {
                 Vector3 tileToAdd = new Vector3(current_player.position.x, floor, current_player.position.z);
                 tileToAdd += new Vector3(x, 0, z);
                 if (!gridPositions.ContainsKey(tileToAdd)) {
