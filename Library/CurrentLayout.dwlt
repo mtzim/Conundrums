@@ -13,6 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PixelRect:
     serializedVersion: 2
+<<<<<<< HEAD
     x: 1366
     y: 43
     width: 1920
@@ -21,6 +22,24 @@ MonoBehaviour:
   m_Title: 
   m_RootView: {fileID: 4}
   m_MinSize: {x: 950, y: 542}
+=======
+    x: 8
+    y: 51
+    width: 1520
+    height: 765
+  m_ShowMode: 4
+  m_Title: 
+  m_RootView: {fileID: 4}
+<<<<<<< HEAD
+  m_MinSize: {x: 950, y: 542}
+=======
+<<<<<<< HEAD
+  m_MinSize: {x: 950, y: 521}
+=======
+  m_MinSize: {x: 950, y: 300}
+>>>>>>> origin/staging
+>>>>>>> master
+>>>>>>> staging
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &2
 MonoBehaviour:
@@ -39,12 +58,39 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 30
+<<<<<<< HEAD
     width: 1920
     height: 947
   m_MinSize: {x: 713, y: 492}
   m_MaxSize: {x: 18008, y: 14042}
   vertical: 1
   controlID: 56
+=======
+<<<<<<< HEAD
+    width: 1520
+    height: 715
+  m_MinSize: {x: 713, y: 492}
+  m_MaxSize: {x: 18008, y: 14042}
+  vertical: 1
+  controlID: 46
+=======
+<<<<<<< HEAD
+    width: 1858
+    height: 987
+  m_MinSize: {x: 711, y: 471}
+  m_MaxSize: {x: 18006, y: 14021}
+  vertical: 1
+  controlID: 142
+=======
+    width: 1920
+    height: 947
+  m_MinSize: {x: 713, y: 492}
+  m_MaxSize: {x: 18008, y: 14042}
+  vertical: 1
+  controlID: 72
+>>>>>>> origin/staging
+>>>>>>> master
+>>>>>>> staging
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -61,8 +107,23 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
+<<<<<<< HEAD
     width: 926
     height: 585
+=======
+<<<<<<< HEAD
+    width: 728
+    height: 440
+=======
+<<<<<<< HEAD
+    width: 984
+    height: 609
+=======
+    width: 920
+    height: 583
+>>>>>>> origin/staging
+>>>>>>> master
+>>>>>>> staging
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 15}
@@ -89,8 +150,13 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
+<<<<<<< HEAD
     width: 1920
     height: 997
+=======
+    width: 1520
+    height: 765
+>>>>>>> staging
   m_MinSize: {x: 950, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &5
@@ -109,7 +175,11 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
+<<<<<<< HEAD
     width: 1920
+=======
+    width: 1520
+>>>>>>> staging
     height: 30
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
@@ -129,8 +199,13 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
+<<<<<<< HEAD
     y: 977
     width: 1920
+=======
+    y: 745
+    width: 1520
+>>>>>>> staging
     height: 20
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
@@ -153,12 +228,39 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
+<<<<<<< HEAD
     width: 1920
     height: 947
   m_MinSize: {x: 713, y: 492}
   m_MaxSize: {x: 18008, y: 14042}
   vertical: 0
   controlID: 57
+=======
+<<<<<<< HEAD
+    width: 1520
+    height: 715
+  m_MinSize: {x: 713, y: 492}
+  m_MaxSize: {x: 18008, y: 14042}
+  vertical: 0
+  controlID: 47
+=======
+<<<<<<< HEAD
+    width: 1858
+    height: 987
+  m_MinSize: {x: 711, y: 471}
+  m_MaxSize: {x: 18006, y: 14021}
+  vertical: 0
+  controlID: 143
+=======
+    width: 1920
+    height: 947
+  m_MinSize: {x: 713, y: 492}
+  m_MaxSize: {x: 18008, y: 14042}
+  vertical: 0
+  controlID: 73
+>>>>>>> origin/staging
+>>>>>>> master
+>>>>>>> staging
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -177,8 +279,13 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
+<<<<<<< HEAD
     width: 926
     height: 947
+=======
+    width: 728
+    height: 715
+>>>>>>> staging
   m_MinSize: {x: 202, y: 442}
   m_MaxSize: {x: 4002, y: 8042}
   vertical: 1
@@ -198,11 +305,33 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
+<<<<<<< HEAD
     y: 585
     width: 926
     height: 362
   m_MinSize: {x: 202, y: 221}
   m_MaxSize: {x: 4002, y: 4021}
+=======
+<<<<<<< HEAD
+    y: 440
+    width: 728
+    height: 275
+=======
+<<<<<<< HEAD
+    y: 609
+    width: 984
+    height: 378
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
+=======
+    y: 583
+    width: 920
+    height: 364
+>>>>>>> master
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
+>>>>>>> origin/staging
+>>>>>>> staging
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
@@ -225,6 +354,7 @@ MonoBehaviour:
   - {fileID: 12}
   m_Position:
     serializedVersion: 2
+<<<<<<< HEAD
     x: 926
     y: 0
     width: 474
@@ -233,6 +363,28 @@ MonoBehaviour:
   m_MaxSize: {x: 10004, y: 14042}
   vertical: 1
   controlID: 58
+=======
+    x: 728
+    y: 0
+<<<<<<< HEAD
+    width: 452
+    height: 715
+=======
+<<<<<<< HEAD
+    width: 459
+    height: 987
+  m_MinSize: {x: 234, y: 471}
+  m_MaxSize: {x: 10004, y: 14021}
+=======
+    width: 571
+    height: 947
+>>>>>>> master
+  m_MinSize: {x: 234, y: 492}
+  m_MaxSize: {x: 10004, y: 14042}
+>>>>>>> origin/staging
+  vertical: 1
+  controlID: 74
+>>>>>>> staging
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -249,8 +401,13 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
+<<<<<<< HEAD
     width: 474
     height: 421
+=======
+    width: 452
+    height: 318
+>>>>>>> staging
   m_MinSize: {x: 204, y: 221}
   m_MaxSize: {x: 4004, y: 4021}
   m_ActualView: {fileID: 18}
@@ -273,9 +430,15 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
+<<<<<<< HEAD
     y: 421
     width: 474
     height: 526
+=======
+    y: 318
+    width: 452
+    height: 397
+>>>>>>> staging
   m_MinSize: {x: 234, y: 271}
   m_MaxSize: {x: 10004, y: 10021}
   m_ActualView: {fileID: 19}
@@ -298,10 +461,17 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
+<<<<<<< HEAD
     x: 1400
     y: 0
     width: 520
     height: 947
+=======
+    x: 1180
+    y: 0
+    width: 340
+    height: 715
+>>>>>>> staging
   m_MinSize: {x: 275, y: 50}
   m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 20}
@@ -380,10 +550,17 @@ MonoBehaviour:
   m_DepthBufferBits: 32
   m_Pos:
     serializedVersion: 2
+<<<<<<< HEAD
     x: 1366
     y: 92
     width: 924
     height: 564
+=======
+    x: 8
+    y: 100
+    width: 726
+    height: 419
+>>>>>>> staging
   m_MaximizeOnPlay: 0
   m_Gizmos: 0
   m_Stats: 0
@@ -392,10 +569,17 @@ MonoBehaviour:
   m_ZoomArea:
     m_HRangeLocked: 0
     m_VRangeLocked: 0
+<<<<<<< HEAD
     m_HBaseRangeMin: -462
     m_HBaseRangeMax: 462
     m_VBaseRangeMin: -259.875
     m_VBaseRangeMax: 259.875
+=======
+    m_HBaseRangeMin: -357.33334
+    m_HBaseRangeMax: 357.33334
+    m_VBaseRangeMin: -201
+    m_VBaseRangeMax: 201
+>>>>>>> staging
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -412,25 +596,43 @@ MonoBehaviour:
       serializedVersion: 2
       x: 0
       y: 17
+<<<<<<< HEAD
       width: 924
       height: 547
     m_Scale: {x: 1, y: 1}
     m_Translation: {x: 462, y: 273.5}
+=======
+      width: 726
+      height: 402
+    m_Scale: {x: 1, y: 1}
+    m_Translation: {x: 363, y: 201}
+>>>>>>> staging
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
+<<<<<<< HEAD
       x: -462
       y: -273.5
       width: 924
       height: 547
+=======
+      x: -363
+      y: -201
+      width: 726
+      height: 402
+>>>>>>> staging
     m_MinimalGUI: 1
   m_defaultScale: 1
   m_TargetTexture: {fileID: 0}
   m_CurrentColorSpace: 0
+<<<<<<< HEAD
   m_LastWindowPixelSize: {x: 924, y: 564}
+=======
+  m_LastWindowPixelSize: {x: 726, y: 419}
+>>>>>>> staging
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000000000100000100
@@ -456,10 +658,17 @@ MonoBehaviour:
   m_DepthBufferBits: 32
   m_Pos:
     serializedVersion: 2
+<<<<<<< HEAD
     x: 1366
     y: 677
     width: 924
     height: 341
+=======
+    x: 8
+    y: 540
+    width: 726
+    height: 254
+>>>>>>> staging
   m_SceneLighting: 1
   lastFramingTime: 875.4818827445956
   m_2DMode: 0
@@ -530,10 +739,10 @@ MonoBehaviour:
   m_DepthBufferBits: 0
   m_Pos:
     serializedVersion: 2
-    x: 986
-    y: 531
+    x: 994
+    y: 514
     width: 455
-    height: 527
+    height: 496
 --- !u!114 &18
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -556,6 +765,7 @@ MonoBehaviour:
   m_DepthBufferBits: 0
   m_Pos:
     serializedVersion: 2
+<<<<<<< HEAD
     x: 2294
     y: 92
     width: 470
@@ -565,6 +775,29 @@ MonoBehaviour:
     m_SelectedIDs: c2450000
     m_LastClickedID: 0
     m_ExpandedIDs: 4c4bfffff24bffff5464ffff4881ffff00000000
+=======
+    x: 738
+    y: 100
+    width: 448
+    height: 297
+  m_TreeViewState:
+    scrollPos: {x: 0, y: 0}
+<<<<<<< HEAD
+    m_SelectedIDs: de2a0000
+    m_LastClickedID: 0
+    m_ExpandedIDs: 8af2ffffd0fbffff00000000
+=======
+<<<<<<< HEAD
+    m_SelectedIDs: 86060000
+    m_LastClickedID: 0
+    m_ExpandedIDs: 36fbffff00000000
+=======
+    m_SelectedIDs: d6300000
+    m_LastClickedID: 12502
+    m_ExpandedIDs: d0fbffff00000000962f0000bc300000
+>>>>>>> origin/staging
+>>>>>>> master
+>>>>>>> staging
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -583,7 +816,7 @@ MonoBehaviour:
       m_ClientGUIView: {fileID: 11}
     m_SearchString: 
   m_ExpandedScenes:
-  - board
+  - MainMenu
   m_CurrenRootInstanceID: 0
   m_Locked: 0
   m_CurrentSortingName: TransformSorting
@@ -609,10 +842,17 @@ MonoBehaviour:
   m_DepthBufferBits: 0
   m_Pos:
     serializedVersion: 2
+<<<<<<< HEAD
     x: 2294
     y: 513
     width: 470
     height: 505
+=======
+    x: 738
+    y: 418
+    width: 448
+    height: 376
+>>>>>>> staging
   m_SearchFilter:
     m_NameFilter: 
     m_ClassNames: []
@@ -629,14 +869,30 @@ MonoBehaviour:
   m_StartGridSize: 16
   m_LastFolders: []
   m_LastFoldersGridSize: 16
+<<<<<<< HEAD
   m_LastProjectPath: C:\Users\Danise\Documents\Danise Edra\SDSU\Spring 2017\CS596
     - ADV 3D\Unity Projects\Conundrums\testproj
+=======
+  m_LastProjectPath: C:\Users\Agincourt\Documents\Unity3D\Conundrums
+>>>>>>> staging
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 01ca9a3b
     m_LastClickedID: 1000000001
+<<<<<<< HEAD
     m_ExpandedIDs: 000000002040000022400000244000002e400000b440000000410000104100003042000008430000fc430000624400005a4500005c4500005e45000060450000624500006445000066450000
+=======
+<<<<<<< HEAD
+    m_ExpandedIDs: 0000000016250000182500001a2500002425000012260000ba260000ce260000122900003a2b0000a22c0000723000007430000076300000783000007a3000007c3000007e300000
+=======
+<<<<<<< HEAD
+    m_ExpandedIDs: 00000000f4250000f6250000f825000002260000ee2600008c270000a0270000dc290000fa2b00005c2d0000f2300000f4300000f6300000f8300000fa300000fc300000fe300000
+=======
+    m_ExpandedIDs: 000000001425000016250000182500002225000010260000b8260000cc26000010290000382b0000a02c000050310000523100005431000056310000583100005a3100005c310000
+>>>>>>> origin/staging
+>>>>>>> master
+>>>>>>> staging
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -664,18 +920,54 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
+<<<<<<< HEAD
     m_ExpandedIDs: 00000000823800002040000022400000244000002e400000b440000000410000104100003042000008430000fc430000624400005a4500005c4500005e45000060450000624500006445000066450000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: Danise'sMiniGame
       m_OriginalName: Danise'sMiniGame
+=======
+<<<<<<< HEAD
+    m_ExpandedIDs: 0000000016250000182500001a2500002425000012260000ba260000ce260000122900003a2b0000a22c0000723000007430000076300000783000007a3000007c3000007e300000
+    m_RenameOverlay:
+      m_UserAcceptedRename: 0
+      m_Name: 
+      m_OriginalName: 
+=======
+<<<<<<< HEAD
+    m_ExpandedIDs: 00000000f4250000f6250000f825000002260000ee2600008c270000a0270000dc290000fa2b00005c2d0000562e0000f2300000f4300000f6300000f8300000fa300000fc300000fe300000
+    m_RenameOverlay:
+      m_UserAcceptedRename: 0
+      m_Name: 
+      m_OriginalName: 
+=======
+    m_ExpandedIDs: 000000001425000016250000182500002225000010260000b8260000cc26000010290000382b0000a02c000050310000523100005431000056310000583100005a3100005c310000
+    m_RenameOverlay:
+      m_UserAcceptedRename: 0
+      m_Name: DontDestroy
+      m_OriginalName: DontDestroy
+>>>>>>> origin/staging
+>>>>>>> master
+>>>>>>> staging
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
+<<<<<<< HEAD
       m_UserData: 17858
+=======
+<<<<<<< HEAD
+      m_UserData: 0
+=======
+<<<<<<< HEAD
+      m_UserData: 0
+=======
+      m_UserData: 14046
+>>>>>>> origin/staging
+>>>>>>> master
+>>>>>>> staging
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
       m_OriginalEventType: 0
@@ -741,10 +1033,17 @@ MonoBehaviour:
   m_DepthBufferBits: 0
   m_Pos:
     serializedVersion: 2
+<<<<<<< HEAD
     x: 2768
     y: 92
     width: 518
     height: 926
+=======
+    x: 1190
+    y: 100
+    width: 338
+    height: 694
+>>>>>>> staging
   m_ScrollPosition: {x: 0, y: 0}
   m_InspectorMode: 0
   m_PreviewResizer:
