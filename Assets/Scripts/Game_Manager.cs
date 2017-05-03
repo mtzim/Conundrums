@@ -13,7 +13,7 @@ public class Game_Manager : MonoBehaviour {
     public int current_turn { get; private set; }
     private Board_Generator generator;
     void Awake() {
-        DontDestroyOnLoad(transform.gameObject);
+        DontDestroyOnLoad(transform.gameObject);       
     }
 
 	void Start() {
