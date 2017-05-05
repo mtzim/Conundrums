@@ -16,7 +16,12 @@ public class Game_Manager : MonoBehaviour {
         DontDestroyOnLoad(transform.gameObject);       
     }
 
-	void Start() {
+    public int p1Score = 0;
+    public int p2Score = 0;
+    public int p3Score = 0;
+    public int p4Score = 0;
+
+    void Start() {
         players = new List<GameObject>();
         generator = GetComponent<Board_Generator>();
         GameObject init;
