@@ -8,11 +8,16 @@ public class Game_Manager : MonoBehaviour {
     public int num_of_players;
     public int minigame_probability;
     public GameObject player_prefab;
+    public static Game_Manager instance = null;
     public string[] minigame_scene_names;
     public List<GameObject> players { get; private set; }
     public int current_turn { get; private set; }
     private Board_Generator generator;
     void Awake() {
+        if (instance == null)
+            instance = this;
+        else if (instance != this)
+            Destroy(gameObject);
         DontDestroyOnLoad(transform.gameObject);       
     }
 
@@ -20,6 +25,7 @@ public class Game_Manager : MonoBehaviour {
     public int p2Score = 0;
     public int p3Score = 0;
     public int p4Score = 0;
+    private bool in_minigame = false;
 
     void Start() {
         players = new List<GameObject>();
@@ -38,16 +44,18 @@ public class Game_Manager : MonoBehaviour {
     }
 	
 	void Update () {
-        if (!players[current_turn].gameObject.GetComponent<Player>().get_turn()) {
+        if (!in_minigame && !players[current_turn].gameObject.GetComponent<Player>().get_turn()) {
             current_turn++;
             if (current_turn == players.Count) {
                 current_turn = 0;
             }
-            players[current_turn].gameObject.SetActive(true);
-            players[current_turn].gameObject.GetComponent<Player>().set_turn(true);
-            if (Random.value * 100 > 100-minigame_probability) {
-                Debug.Log("in");
+            if (Random.value * 100 > 100 - minigame_probability) {
+                in_minigame = true;
                 pick_minigame();
+            }
+            else {
+                players[current_turn].gameObject.SetActive(true);
+                players[current_turn].gameObject.GetComponent<Player>().set_turn(true);
             }
         }
 	}
@@ -58,15 +66,23 @@ public class Game_Manager : MonoBehaviour {
         SceneManager.LoadScene(minigame_scene_names[choice]);
     }
 
-    void return_from_minigame() {
+    public void return_from_minigame() {
+        SceneManager.LoadScene("board");
         for (int i = 0; i < players.Count; i++) {
-            players[i].gameObject.SetActive(false);
+            players[i].gameObject.SetActive(true);
         }
+        generator.boardHolder.gameObject.SetActive(true);
+        float a = 0f;
+        while (a < 5.0f)
+            a += Time.deltaTime;
+        players[current_turn].gameObject.GetComponent<Player>().set_turn(true);
+        in_minigame = false;
     }
 
     void store_player_state() {
         for(int i = 0; i < players.Count; i++) {
             players[i].gameObject.SetActive(false);
         }
+        generator.boardHolder.gameObject.SetActive(false);
     }
 }
