@@ -36,23 +36,25 @@ public class FallenSkyController : MonoBehaviour {
             (players[2].activeInHierarchy == false) && (players[3].activeInHierarchy == false))
         {
             GameObject.Find("Game_Manager").GetComponent<Game_Manager>().p1Score += 100;
+            GameObject.Find("Game_Manager").GetComponent<Game_Manager>().return_from_minigame();
         }
         if ((players[0].activeInHierarchy == false) && (players[1].activeInHierarchy == true) &&
             (players[2].activeInHierarchy == false) && (players[3].activeInHierarchy == false))
         {
             GameObject.Find("Game_Manager").GetComponent<Game_Manager>().p2Score += 100;
+            GameObject.Find("Game_Manager").GetComponent<Game_Manager>().return_from_minigame();
         }
         if ((players[0].activeInHierarchy == false) && (players[1].activeInHierarchy == false) &&
             (players[2].activeInHierarchy == true) && (players[3].activeInHierarchy == false))
         {
             GameObject.Find("Game_Manager").GetComponent<Game_Manager>().p3Score += 100;
+            GameObject.Find("Game_Manager").GetComponent<Game_Manager>().return_from_minigame();
         }
         if ((players[0].activeInHierarchy == false) && (players[1].activeInHierarchy == false) &&
             (players[2].activeInHierarchy == false) && (players[3].activeInHierarchy == true))
         {
             GameObject.Find("Game_Manager").GetComponent<Game_Manager>().p4Score += 100;
-        }
-
-        //return to board --figureout howto
+            GameObject.Find("Game_Manager").GetComponent<Game_Manager>().return_from_minigame();
+        }        
     }
 }
