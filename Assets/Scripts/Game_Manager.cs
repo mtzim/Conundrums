@@ -72,9 +72,6 @@ public class Game_Manager : MonoBehaviour {
             players[i].gameObject.SetActive(true);
         }
         generator.boardHolder.gameObject.SetActive(true);
-        float a = 0f;
-        while (a < 5.0f)
-            a += Time.deltaTime;
         players[current_turn].gameObject.GetComponent<Player>().set_turn(true);
         in_minigame = false;
     }
