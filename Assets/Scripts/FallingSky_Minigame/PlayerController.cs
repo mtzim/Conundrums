@@ -42,6 +42,22 @@ public class PlayerController : MonoBehaviour {
             transform.Translate(0f, 0f, z);
             transform.Translate(x, 0f, 0f);
         }
+        if (gameObject.CompareTag("Player2"))
+        {
+            float x = Input.GetAxis("Horizontal2") * Time.deltaTime * moveSpeed;
+            float z = Input.GetAxis("Vertical2") * Time.deltaTime * moveSpeed;
+
+            transform.Translate(0f, 0f, z);
+            transform.Translate(x, 0f, 0f);
+        }
+        if (gameObject.CompareTag("Player3"))
+        {
+            float x = Input.GetAxis("Horizontal3") * Time.deltaTime * moveSpeed;
+            float z = Input.GetAxis("Vertical3") * Time.deltaTime * moveSpeed;
+
+            transform.Translate(0f, 0f, z);
+            transform.Translate(x, 0f, 0f);
+        }
     }
 
     private void checkHealth()
