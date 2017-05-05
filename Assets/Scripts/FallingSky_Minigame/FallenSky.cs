@@ -9,4 +9,13 @@ public class FallenSky : MonoBehaviour {
     void Start () {
         DestroyObject(gameObject, 5);
 	}
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player0"))
+        {
+            collision.gameObject.GetComponent<PlayerController>().p1HP -= 10;
+            Debug.Log("Hit Player0");
+        }
+    }
 }

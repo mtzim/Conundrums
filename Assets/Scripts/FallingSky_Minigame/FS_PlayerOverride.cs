@@ -5,9 +5,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class FS_PlayerOverride : MonoBehaviour {
-
+          
     private bool fs_SceneLoaded = false;
-
+    
 	// Use this for initialization
 	void Start () {
 		
@@ -18,9 +18,10 @@ public class FS_PlayerOverride : MonoBehaviour {
         SceneManager.sceneLoaded += OnSceneLoaded;
         if (fs_SceneLoaded)
         {
+            
             Debug.Log("PlayerOverride Success");
         }
-    }
+    }    
 
     private void OnSceneLoaded(Scene arg0, LoadSceneMode arg1)
     {
@@ -29,7 +30,7 @@ public class FS_PlayerOverride : MonoBehaviour {
             gameObject.GetComponent<Player>().enabled = false;
             gameObject.GetComponentInChildren<Camera>().enabled = false;
             gameObject.GetComponentInChildren<Light>().enabled = false;
-            gameObject.SetActive(true);
+            //gameObject.SetActive(true);
             fs_SceneLoaded = true;
         }
     }
