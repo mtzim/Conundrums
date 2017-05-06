@@ -10,7 +10,7 @@ public class FallenSky : MonoBehaviour {
         DestroyObject(gameObject, 5);
 	}
 
-    private void OnCollisionEnter(Collision collision)
+   /* private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player0"))
         {
@@ -28,5 +28,5 @@ public class FallenSky : MonoBehaviour {
         {
             collision.gameObject.GetComponent<PlayerController>().TakeDamage(10);
         }
-    }
+    }*/
 }

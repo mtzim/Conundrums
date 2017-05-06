@@ -84,7 +84,7 @@ public class PlayerController : MonoBehaviour {
         }
     }*/
 
-    public void TakeDamage(int amt)
+    private void TakeDamage(int amt)
     {
         currHP -= amt;
         if (currHP <= 0)
@@ -101,6 +101,10 @@ public class PlayerController : MonoBehaviour {
         if (collision.gameObject.CompareTag("Death"))
         {
             gameObject.SetActive(false);
+        }
+        if (collision.gameObject.CompareTag("SpikeBallFS"))
+        {
+            TakeDamage(10);
         }
     }
 }

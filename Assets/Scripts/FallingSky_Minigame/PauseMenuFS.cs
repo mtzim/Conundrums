@@ -30,9 +30,22 @@ public class PauseMenuFS : MonoBehaviour
         player.GetComponentInChildren<CameraControllerSP>().enabled = enable;
     }*/
 
+    private void PauseGame(bool pause)
+    {
+        if (pause)
+        {
+            Time.timeScale = 0;
+        }
+        else
+        {
+            Time.timeScale = 1;
+        }
+    }
+
     public void ClickedButton()
     {
         Cursor.visible = toggle;
+        PauseGame(toggle);
         toggle = !toggle;
         //TogMouseLook(toggle);
         pauseMenu.SetActive(!toggle);        
@@ -44,7 +57,8 @@ public class PauseMenuFS : MonoBehaviour
         {
             pauseMenu.SetActive(toggle);
             Cursor.visible = toggle;
-            toggle = !toggle;
+            PauseGame(toggle);
+            toggle = !toggle;            
             //TogMouseLook(toggle);
         }
         else

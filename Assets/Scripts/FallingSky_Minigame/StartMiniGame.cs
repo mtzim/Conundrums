@@ -9,6 +9,11 @@ public class StartMiniGame : MonoBehaviour {
     public GameObject player3;
     public GameObject player4;
 
+    private void Start()
+    {
+        Cursor.visible = true;
+    }
+
     public void StartGame()
     {
         Camera.main.GetComponent<FallenSkyController>().enabled = true;
