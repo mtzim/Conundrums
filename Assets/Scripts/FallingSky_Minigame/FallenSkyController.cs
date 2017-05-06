@@ -10,7 +10,7 @@ public class FallenSkyController : MonoBehaviour {
 
     void Start()
     {
-        InvokeRepeating("SpawnObject", 2, 0.5f);
+        InvokeRepeating("SpawnObject", 2, 0.4f);
         numPlayers = GameObject.Find("Game_Manager").GetComponent<Game_Manager>().num_of_players;
         for (int i = 0; i < numPlayers; i++)
         {
@@ -27,7 +27,7 @@ public class FallenSkyController : MonoBehaviour {
     {
         float x = Random.Range(-2.5f, 2.5f);
         float z = Random.Range(-4.0f, 2.0f);
-        Instantiate(target, new Vector3(x, 5, z), Quaternion.identity);
+        Instantiate(target, new Vector3(x, 6.5f, z), Quaternion.identity);
     }
 
     private void winner()
