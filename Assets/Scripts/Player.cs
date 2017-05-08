@@ -12,11 +12,10 @@ public class Player : MonoBehaviour {
     private int floor = 0;
     private Board_Generator board;
     private bool turn;          //for being able to move available steps
-    private int player_num;
+    public int player_num;
     private const float step = .25f;
     private Rigidbody rb;
     private bool can_jump = true;       //for hitting the dice
-    private bool dice_made = false;
     private Dice current_dice;
     private bool input_clear = false;
     private bool can_move = false;
@@ -37,12 +36,12 @@ public class Player : MonoBehaviour {
         }
         //means turn to dice jump
         if (turn && can_jump) {
-            if (!dice_made) {                
+            if (current_dice == null) {                
                 GameObject inst = Instantiate(dice) as GameObject;
+                current_dice = inst.gameObject.GetComponent<Dice>();
                 Vector3 pos = new Vector3(transform.position.x, transform.position.y + .75f, transform.position.z);
                 inst.transform.position = pos;
                 inst.transform.rotation = this.transform.rotation;
-                dice_made = true;
             }
             //need to add floor check so can't repeatedly jump
             if (Input.GetButtonDown("Jump" + player_num)) {
@@ -88,7 +87,7 @@ public class Player : MonoBehaviour {
 
         if (steps_can_move <= 0) {
             turn = false;
-            dice_made = can_move = false;
+            can_move = false;
             can_jump = true;            
         }
     }

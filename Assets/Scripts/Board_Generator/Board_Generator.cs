@@ -20,7 +20,7 @@ public class Board_Generator : MonoBehaviour
     public GameObject[] floorTiles;
     public GameObject[] decorationTiles;
     Game_Manager game;
-    private Transform boardHolder;
+    public Transform boardHolder;
     private Dictionary<Vector3, Tile> gridPositions = new Dictionary<Vector3, Tile>();
 
     // Use this for initialization
@@ -39,6 +39,7 @@ public class Board_Generator : MonoBehaviour
     public void board_setup()
     {
         boardHolder = new GameObject("Board").transform;
+        DontDestroyOnLoad(boardHolder);
         for (int x = -5; x < columns; x++)
         {
             for (int z = -5; z < rows; z++)
