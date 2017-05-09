@@ -35,6 +35,7 @@ public class Game_Manager : MonoBehaviour {
             init = Instantiate(player_prefab) as GameObject;
             init.GetComponent<Player>().set_player_num(i);
             init.GetComponent<Player>().set_turn(false);
+            init.GetComponent<Player>().setPlayerColor();
             init.GetComponent<Player>().set_board_manager(generator);
             init.gameObject.SetActive(false);
             players.Add(init);
