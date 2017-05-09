@@ -9,6 +9,9 @@ public class Player : MonoBehaviour {
     public float thrust = 95f;
     public int steps_can_move;
     public SpriteRenderer[] armor;
+    public LayerMask groundLayer;
+    public Transform groundCheck;
+    public Animator myAnim;
 
     private int floor = 0;
     private Board_Generator board;
@@ -20,6 +23,9 @@ public class Player : MonoBehaviour {
     private Dice current_dice;
     private bool input_clear = false;
     private bool can_move = false;
+    //private Animator myAnim;
+    private bool grounded = false;
+    private float groundCheckRadius = 0.2f;
 
     void Awake() {
         DontDestroyOnLoad(transform.gameObject);
@@ -27,6 +33,7 @@ public class Player : MonoBehaviour {
 
     void Start () {
         rb = GetComponent<Rigidbody>();
+        myAnim = GetComponentInChildren<Animator>();
         steps_can_move = 0;
     }
 	
@@ -45,7 +52,9 @@ public class Player : MonoBehaviour {
                 inst.transform.rotation = this.transform.rotation;
             }
             //need to add floor check so can't repeatedly jump
-            if (Input.GetButtonDown("Jump" + player_num)) {
+            if (grounded && Input.GetButtonDown("Jump" + player_num)) {
+                grounded = false;
+                myAnim.SetBool("isGrounded", grounded);
                 rb.AddForce(transform.up * thrust);
                 can_jump = false;
                 can_move = true;
@@ -54,6 +63,13 @@ public class Player : MonoBehaviour {
         }
     }
 
+    void FixedUpdate()
+    {
+        grounded = true;
+        myAnim.SetBool("isGrounded", grounded);
+
+        myAnim.SetFloat("verticalSpeed", rb.velocity.y);
+    }
     private void movement() {
         if (Input.GetAxis("Horizontal" + player_num) == 0 && Input.GetAxis("Vertical" + player_num) == 0) {
             input_clear = true;
