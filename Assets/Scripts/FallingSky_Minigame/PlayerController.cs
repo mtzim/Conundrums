@@ -12,10 +12,17 @@ public class PlayerController : MonoBehaviour {
     public int currHP = maxHP;
     public RectTransform hpBar;
 
+    Animator myAnim;
+    bool facingRight;
+
     // Use this for initialization
     void Start () {
         if (GetComponent<Rigidbody>())
+        {
             GetComponent<Rigidbody>().freezeRotation = true;
+            myAnim = GetComponent<Animator>();
+        }
+            
     }
 	
 	// Update is called once per frame
@@ -30,7 +37,9 @@ public class PlayerController : MonoBehaviour {
         {
             float x = Input.GetAxis("Horizontal0") * Time.deltaTime * moveSpeed;
             float z = Input.GetAxis("Vertical0") * Time.deltaTime * moveSpeed;
-
+            myAnim.SetFloat("speed", Mathf.Abs(x) + Mathf.Abs(z));
+            if (x > 0 && !facingRight)       flip();
+            else if(x < 0 && facingRight)   flip();
             transform.rotation = Quaternion.LookRotation(transform.position - Camera.main.transform.position); //fixes eyes from dissappearing
             transform.Translate(0f, 0f, z);
             transform.Translate(x, 0f, 0f);
@@ -106,5 +115,13 @@ public class PlayerController : MonoBehaviour {
         {
             TakeDamage(10);
         }
+    }
+
+    void flip()
+    {
+        facingRight = !facingRight;
+        Vector3 theScale = transform.localScale;
+        theScale.x *= -1;
+        transform.localScale = theScale;
     }
 }
