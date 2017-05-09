@@ -8,6 +8,7 @@ public class Player : MonoBehaviour {
     public GameObject dice;             //instantiate when able to jump
     public float thrust = 95f;
     public int steps_can_move;
+    public SpriteRenderer[] armor;
 
     private int floor = 0;
     private Board_Generator board;
@@ -132,5 +133,33 @@ public class Player : MonoBehaviour {
 
     public void set_board_manager(Board_Generator manage) {
         board = manage;
+    }
+
+    public void setPlayerColor()
+    {
+        Color armorColor;
+        switch (player_num)
+        {
+            case 0:
+                armorColor = new Color(1f, 0f, 0f, 1f);
+                break;
+            case 1:
+                armorColor = new Color(0f, 0f, 1f, 1f);
+                break;
+            case 2:
+                armorColor = new Color(0f, 1f, 0f, 1f);
+                break;
+            case 3:
+                armorColor = new Color(1f, 0.92f, 0.016f, 1f);
+                break;
+            default:
+                armorColor = new Color(1f, 1f, 1f, 1f);
+                break;
+        }
+        int x = 0;
+        foreach(SpriteRenderer i in armor)
+        {
+            armor[x++].color = armorColor;
+        }
     }
 }
