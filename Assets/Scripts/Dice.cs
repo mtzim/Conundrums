@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Dice : MonoBehaviour {
     public Texture[] number = new Texture[20];
+    public AudioClip[] hitSound = new AudioClip[4];
+    public AudioSource diceAudio;
     public float speed = 1f;
     public int current_tex;
     private int i = 0;
@@ -14,6 +16,8 @@ public class Dice : MonoBehaviour {
     void Start () {
         rend = GetComponent<Renderer>();
         rend.material.mainTexture = number[0];
+
+        diceAudio = GetComponent<AudioSource>();
     }
 	
 	// Update is called once per frame
@@ -34,6 +38,12 @@ public class Dice : MonoBehaviour {
     void OnTriggerEnter(Collider col) {
         if (col.tag == "Player") {
             change = false;
+
+            if(i == 19) diceAudio.PlayOneShot(hitSound[3]);
+            else if(i >= 10) diceAudio.PlayOneShot(hitSound[2]);
+            else if(i >= 1) diceAudio.PlayOneShot(hitSound[1]);
+            else diceAudio.PlayOneShot(hitSound[3]);
+
             col.gameObject.GetComponent<Player>().steps_can_move = i+1;
         }
     }
