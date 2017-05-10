@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour {
             myAnim.SetFloat("speed", Mathf.Abs(x) + Mathf.Abs(z));
             if (x > 0 && !facingRight)       flip();
             else if(x < 0 && facingRight)   flip();
-            transform.rotation = Quaternion.LookRotation(transform.position - Camera.main.transform.position); //fixes eyes from dissappearing
+            //transform.rotation = Quaternion.LookRotation(transform.position - Camera.main.transform.position); //fixes eyes from dissappearing
             transform.Translate(0f, 0f, z);
             transform.Translate(x, 0f, 0f);
             if (Input.GetButtonDown("Jump0"))
