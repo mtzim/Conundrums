@@ -18,6 +18,9 @@ public class Roll_Manager : MonoBehaviour {
     private bool countdown;
     private float time;
     private List<int> alive;
+    private AudioSource sound;
+    public AudioClip victorySound;
+    private bool played;
 
     void Start() {
         manager = GameObject.FindGameObjectWithTag("GameController").GetComponent<Game_Manager>();
@@ -26,6 +29,7 @@ public class Roll_Manager : MonoBehaviour {
         points = new int[num_of_players];
         alive = new List<int>();
         init();
+        sound = GetComponent<AudioSource>();
     }
 
     public void init() {
@@ -60,6 +64,12 @@ public class Roll_Manager : MonoBehaviour {
             }
             winner++;
             win_panel.transform.GetChild(0).GetComponent<Text>().text = "Player " + winner + " is the Winner!!!";
+            if (!played)
+            {
+                sound.volume = 0.5f;
+                played = true;
+                sound.PlayOneShot(victorySound);
+            }
             countdown = true;
         }
     }

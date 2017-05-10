@@ -12,6 +12,9 @@ public class FallenSkyController : MonoBehaviour {
     private int numPlayers;
     private bool winnerSplash = false;
     private float backToMainGameTimer = 5f;
+    private AudioSource sound;
+    public AudioClip victorySound;
+    private bool played;
 
 
     void Start()
@@ -21,7 +24,8 @@ public class FallenSkyController : MonoBehaviour {
         for (int i = 0; i < numPlayers; i++)
         {
             players[i].SetActive(true);
-        }       
+        }
+        sound = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -72,6 +76,12 @@ public class FallenSkyController : MonoBehaviour {
         {
             winnerText.text = "Winner Player 4!!!";
         }
+        if (!played) {
+            sound.volume = 0.5f;
+            played = true;
+            sound.PlayOneShot(victorySound);
+        }
+
     }
 
     private void winner()
