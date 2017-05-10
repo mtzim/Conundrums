@@ -27,7 +27,10 @@ public class Game_Manager : MonoBehaviour {
     public int p4Score = 0;
     private bool in_minigame = false;
 
+    private AudioSource music;
+
     void Start() {
+        music = GetComponent<AudioSource>();
         num_of_players = GameObject.Find("NumOfPlayers").GetComponent<NumPlayers>().numberOfPlayers;
         players = new List<GameObject>();
         generator = GetComponent<Board_Generator>();
@@ -53,6 +56,7 @@ public class Game_Manager : MonoBehaviour {
             }
             if (Random.value * 100 > 100 - minigame_probability) {
                 in_minigame = true;
+                music.mute = true;
                 pick_minigame();
             }
             else {
@@ -76,6 +80,7 @@ public class Game_Manager : MonoBehaviour {
         generator.boardHolder.gameObject.SetActive(true);
         players[current_turn].gameObject.GetComponent<Player>().set_turn(true);
         in_minigame = false;
+        music.mute = false;
     }
 
     void store_player_state() {
