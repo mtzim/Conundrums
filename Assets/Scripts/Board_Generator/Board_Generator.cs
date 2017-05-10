@@ -104,7 +104,7 @@ public class Board_Generator : MonoBehaviour
         {
             for (int z = -5; z < rows; z++)
             {
-                Vector3 tileToAdd = new Vector3(current_player.position.x, floor, current_player.position.z);
+                Vector3 tileToAdd = new Vector3(Mathf.Round(current_player.position.x), floor, Mathf.Round(current_player.position.z));
                 tileToAdd += new Vector3(x, 0f, z);
                 if (!gridPositions.ContainsKey(tileToAdd))
                 {
