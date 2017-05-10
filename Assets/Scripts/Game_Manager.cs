@@ -28,6 +28,7 @@ public class Game_Manager : MonoBehaviour {
     private bool in_minigame = false;
 
     void Start() {
+        num_of_players = GameObject.Find("NumOfPlayers").GetComponent<NumPlayers>().numberOfPlayers;
         players = new List<GameObject>();
         generator = GetComponent<Board_Generator>();
         GameObject init;
