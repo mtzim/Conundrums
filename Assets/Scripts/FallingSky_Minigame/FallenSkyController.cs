@@ -35,7 +35,7 @@ public class FallenSkyController : MonoBehaviour {
 
             for (int i = 0; i < numPlayers; i++)
             {
-                players[i].GetComponent<PlayerController>().enabled = false;
+                players[i].GetComponentInChildren<PlayerController>().enabled = false;
             }
 
             backToMainGameTimer -= Time.deltaTime;
@@ -68,7 +68,7 @@ public class FallenSkyController : MonoBehaviour {
         {
             winnerText.text = "Winner Player 3!!!";
         }
-        else
+        else if ((players[3].activeInHierarchy == true))
         {
             winnerText.text = "Winner Player 4!!!";
         }

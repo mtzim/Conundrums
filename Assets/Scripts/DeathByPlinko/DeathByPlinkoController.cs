@@ -37,7 +37,7 @@ public class DeathByPlinkoController : MonoBehaviour
 
             for (int i = 0; i < numPlayers; i++)
             {
-                players[i].GetComponent<PlayerController>().enabled = false;
+                players[i].GetComponentInChildren<PlayerController>().enabled = false;
             }
 
             backToMainGameTimer -= Time.deltaTime;
@@ -70,7 +70,7 @@ public class DeathByPlinkoController : MonoBehaviour
         {
             winnerText.text = "Winner Player 3!!!";
         }
-        else
+        else if((players[3].activeInHierarchy == true))
         {
             winnerText.text = "Winner Player 4!!!";
         }
