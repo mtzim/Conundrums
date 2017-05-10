@@ -77,8 +77,6 @@ public class Board_Generator : MonoBehaviour
                 instance.transform.SetParent(boardHolder);
             }
         }
-        else
-            Debug.Log("already tiles");
     }
 
     public void add_to_board(int floor)
