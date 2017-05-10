@@ -59,8 +59,7 @@ public class Board_Generator : MonoBehaviour
 
     private void add_tiles(Vector3 tileToAdd)
     {
-        if (!gridPositions.ContainsKey(tileToAdd))
-        {
+        if (!gridPositions.ContainsKey(tileToAdd)) {
             GameObject toInstantiate = floorTiles[Random.Range(0, floorTiles.Length)];
             GameObject instance = Instantiate(toInstantiate, new Vector3(tileToAdd.x, tileToAdd.y, tileToAdd.z), Quaternion.identity) as GameObject;
             Renderer rend = instance.gameObject.GetComponent<Renderer>();
@@ -71,14 +70,15 @@ public class Board_Generator : MonoBehaviour
                 rend.material.color = Color.black;
             gridPositions.Add(tileToAdd, new Tile(tileToAdd, rend.material.color));
 
-            if (Random.Range(0, 10) == 1)
-            {
+            if (Random.Range(0, 10) == 1) {
                 toInstantiate = decorationTiles[Random.Range(0, decorationTiles.Length)];
                 instance = Instantiate(toInstantiate) as GameObject;
                 instance.transform.position = new Vector3(tileToAdd.x, tileToAdd.y + .1f, tileToAdd.z);
                 instance.transform.SetParent(boardHolder);
             }
         }
+        else
+            Debug.Log("already tiles");
     }
 
     public void add_to_board(int floor)
@@ -104,8 +104,8 @@ public class Board_Generator : MonoBehaviour
         {
             for (int z = -5; z < rows; z++)
             {
-                Vector3 tileToAdd = new Vector3(current_player.position.x, floor, current_player.position.z);
-                tileToAdd += new Vector3(x, 0, z);
+                Vector3 tileToAdd = new Vector3(Mathf.Round(current_player.position.x), floor, Mathf.Round(current_player.position.z));
+                tileToAdd += new Vector3(x, 0f, z);
                 if (!gridPositions.ContainsKey(tileToAdd))
                 {
                     GameObject toInstantiate = floorTiles[Random.Range(0, floorTiles.Length)];
