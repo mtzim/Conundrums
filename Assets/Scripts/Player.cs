@@ -28,6 +28,8 @@ public class Player : MonoBehaviour {
     //private Animator myAnim;
     private bool grounded = false;
     private float groundCheckRadius = 0.2f;
+    public AudioClip[] footSteps = new AudioClip[4];
+    private AudioSource sounds;
 
     void Awake() {
         DontDestroyOnLoad(transform.gameObject);
@@ -37,6 +39,7 @@ public class Player : MonoBehaviour {
         rb = GetComponent<Rigidbody>();
         myAnim = GetComponentInChildren<Animator>();
         steps_can_move = 0;
+        sounds = GetComponent<AudioSource>();
     }
 	
 	void Update () {
@@ -86,6 +89,7 @@ public class Player : MonoBehaviour {
                 steps_can_move--;
                 current_dice.step_made();
                 board.add_to_board(floor);
+                sounds.PlayOneShot(footSteps[Random.Range(0, 3)]);
             }
             else if(vert < 0) {
                 input_clear = false;
