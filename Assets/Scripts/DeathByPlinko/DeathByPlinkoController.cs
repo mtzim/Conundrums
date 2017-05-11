@@ -14,7 +14,9 @@ public class DeathByPlinkoController : MonoBehaviour
     private bool winnerSplash = false;
     private float backToMainGameTimer = 5f;
     public float spawnTime = 0.5f;
-
+    private AudioSource sound;
+    public AudioClip victorySound;
+    private bool played;
 
     void Start()
     {
@@ -24,6 +26,7 @@ public class DeathByPlinkoController : MonoBehaviour
         {
             players[i].SetActive(true);
         }
+        sound = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -37,7 +40,7 @@ public class DeathByPlinkoController : MonoBehaviour
 
             for (int i = 0; i < numPlayers; i++)
             {
-                players[i].GetComponent<PlayerController>().enabled = false;
+                players[i].GetComponentInChildren<PlayerController>().enabled = false;
             }
 
             backToMainGameTimer -= Time.deltaTime;
@@ -70,9 +73,15 @@ public class DeathByPlinkoController : MonoBehaviour
         {
             winnerText.text = "Winner Player 3!!!";
         }
-        else
+        else if((players[3].activeInHierarchy == true))
         {
             winnerText.text = "Winner Player 4!!!";
+        }
+        if (!played)
+        {
+            sound.volume = 0.5f;
+            played = true;
+            sound.PlayOneShot(victorySound);
         }
     }
 

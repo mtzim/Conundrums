@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 68b47dce33de5fd4db4695250b281b2e
+timeCreated: 1494444055
+licenseType: Pro
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: DK Full Blast
+  fontNames:
+  - DK Full Blast
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

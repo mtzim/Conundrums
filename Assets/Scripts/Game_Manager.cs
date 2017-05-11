@@ -6,6 +6,7 @@ using Random = UnityEngine.Random;
 
 public class Game_Manager : MonoBehaviour {
     public int num_of_players;
+    public int num_of_floors;
     public int minigame_probability;
     public GameObject player_prefab;
     public static Game_Manager instance = null;
@@ -27,8 +28,14 @@ public class Game_Manager : MonoBehaviour {
     public int p4Score = 0;
     private bool in_minigame = false;
 
+    private AudioSource music;
+
     void Start() {
-        num_of_players = GameObject.Find("NumOfPlayers").GetComponent<NumPlayers>().numberOfPlayers;
+        music = GetComponent<AudioSource>();
+        GameObject amtPlayers = GameObject.Find("NumOfPlayers");
+        num_of_players = amtPlayers.GetComponent<NumPlayers>().numberOfPlayers;
+        num_of_floors = amtPlayers.GetComponent<NumPlayers>().numberOfFloors;
+        Destroy(amtPlayers);
         players = new List<GameObject>();
         generator = GetComponent<Board_Generator>();
         GameObject init;
@@ -53,6 +60,7 @@ public class Game_Manager : MonoBehaviour {
             }
             if (Random.value * 100 > 100 - minigame_probability) {
                 in_minigame = true;
+                music.mute = true;
                 pick_minigame();
             }
             else {
@@ -76,6 +84,7 @@ public class Game_Manager : MonoBehaviour {
         generator.boardHolder.gameObject.SetActive(true);
         players[current_turn].gameObject.GetComponent<Player>().set_turn(true);
         in_minigame = false;
+        music.mute = false;
     }
 
     void store_player_state() {
@@ -83,5 +92,15 @@ public class Game_Manager : MonoBehaviour {
             players[i].gameObject.SetActive(false);
         }
         generator.boardHolder.gameObject.SetActive(false);
+    }
+
+    //when returning to main menu via pause menu, make everything active to be destroyed by CleanSlate()
+    public void setAllActive()
+    {
+        for (int i = 0; i < players.Count; i++)
+        {
+            players[i].gameObject.SetActive(true);
+        }
+        generator.boardHolder.gameObject.SetActive(true);
     }
 }

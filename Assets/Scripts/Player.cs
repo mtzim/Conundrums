@@ -15,17 +15,22 @@ public class Player : MonoBehaviour {
 
     private int floor = 0;
     private Board_Generator board;
-    private bool turn;          //for being able to move available steps
+    [SerializeField]private bool turn;          //for being able to move available steps
     public int player_num;
     private const float step = .25f;
     private Rigidbody rb;
+    [SerializeField]
     private bool can_jump = true;       //for hitting the dice
     private Dice current_dice;
     private bool input_clear = false;
+    [SerializeField]
     private bool can_move = false;
     //private Animator myAnim;
     private bool grounded = false;
     private float groundCheckRadius = 0.2f;
+    public AudioClip[] footSteps = new AudioClip[4];
+    private AudioSource sounds;
+    private GameObject gameCanvas;
 
     void Awake() {
         DontDestroyOnLoad(transform.gameObject);
@@ -35,6 +40,8 @@ public class Player : MonoBehaviour {
         rb = GetComponent<Rigidbody>();
         myAnim = GetComponentInChildren<Animator>();
         steps_can_move = 0;
+        sounds = GetComponent<AudioSource>();
+        
     }
 	
 	void Update () {
@@ -84,6 +91,7 @@ public class Player : MonoBehaviour {
                 steps_can_move--;
                 current_dice.step_made();
                 board.add_to_board(floor);
+                sounds.PlayOneShot(footSteps[Random.Range(0, 3)]);
             }
             else if(vert < 0) {
                 input_clear = false;
@@ -117,9 +125,21 @@ public class Player : MonoBehaviour {
             floor += 5;
             board.new_floor(floor);
             transform.position = new Vector3(transform.position.x, transform.position.y + 5, transform.position.z);
-            current_dice.transform.position = new Vector3(current_dice.transform.position.x, current_dice.transform.position.y + 5, current_dice.transform.position.z);
+            if(current_dice != null)
+                current_dice.transform.position = new Vector3(current_dice.transform.position.x, current_dice.transform.position.y + 5, current_dice.transform.position.z);
             steps_can_move--;
             current_dice.step_made();
+            if (steps_can_move <= 0) {
+                current_dice = null;
+                turn = false;
+                can_move = false;
+                can_jump = true;
+            }
+        }
+        else if (collide.tag == "goal")
+        {
+            gameCanvas = GameObject.Find("Canvas");
+            gameCanvas.GetComponent<GameFinished>().finished();
         }
     }
 

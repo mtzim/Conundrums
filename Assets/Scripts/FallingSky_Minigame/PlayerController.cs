@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour {
             myAnim.SetFloat("speed", Mathf.Abs(x) + Mathf.Abs(z));
             if (x > 0 && !facingRight)       flip();
             else if(x < 0 && facingRight)   flip();
-            transform.rotation = Quaternion.LookRotation(transform.position - Camera.main.transform.position); //fixes eyes from dissappearing
+            //transform.rotation = Quaternion.LookRotation(transform.position - Camera.main.transform.position); //fixes eyes from dissappearing
             transform.Translate(0f, 0f, z);
             transform.Translate(x, 0f, 0f);
             if (Input.GetButtonDown("Jump0"))
@@ -139,8 +139,8 @@ public class PlayerController : MonoBehaviour {
         currHP -= amt;
         if (currHP <= 0)
         {
-            currHP = 0;
-            gameObject.SetActive(false);
+            currHP = 0;            
+            gameObject.transform.parent.gameObject.SetActive(false);
         }
 
         hpBar.sizeDelta = new Vector2(currHP, hpBar.sizeDelta.y);
@@ -150,7 +150,7 @@ public class PlayerController : MonoBehaviour {
     {
         if (collision.gameObject.CompareTag("Death"))
         {
-            gameObject.SetActive(false);
+            gameObject.transform.parent.gameObject.SetActive(false);
         }
         if (collision.gameObject.CompareTag("SpikeBallFS"))
         {

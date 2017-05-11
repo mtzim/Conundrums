@@ -10,6 +10,7 @@ public class SliderValues : MonoBehaviour {
 
     private void Start()
     {
+        slider.value = GameObject.Find("VolumeManager").GetComponent<VolumeManager>().volumeLevel;
         sliderValue.text = Mathf.Round(slider.value * 100).ToString();
     }
 
