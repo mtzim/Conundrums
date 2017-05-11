@@ -6,6 +6,9 @@ public class NumPlayers : MonoBehaviour {
 
     [HideInInspector]
     public int numberOfPlayers;
+    [HideInInspector]
+    public int numberOfFloors;
+
 
     private void Awake()
     {
@@ -15,5 +18,9 @@ public class NumPlayers : MonoBehaviour {
     public void setNumberOfPlayers(int numPlayers)
     {
         numberOfPlayers = numPlayers;
+    }
+    public void setNumberofFloors(int numFloors)
+    {
+        numberOfFloors = numFloors;
     }
 }
