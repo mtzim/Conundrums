@@ -20,14 +20,18 @@ public class Board_Generator : MonoBehaviour
     public GameObject[] floorTiles;
     public GameObject[] decorationTiles;
     public GameObject ladderTile;
+    public GameObject goldenTile;
+    public int maxFloors;
     Game_Manager game;
     public Transform boardHolder;
     private Dictionary<Vector3, Tile> gridPositions = new Dictionary<Vector3, Tile>();
+    private bool finalGoalFound;
 
     // Use this for initialization
     void Start()
     {
         game = GetComponent<Game_Manager>();
+        maxFloors = game.num_of_floors;
         board_setup();
     }
 
@@ -56,10 +60,12 @@ public class Board_Generator : MonoBehaviour
                 instance.transform.SetParent(boardHolder);
             }
         }
+        finalGoalFound = false;
     }
 
     private void add_tiles(Vector3 tileToAdd)
     {
+        Debug.Log(tileToAdd.y);
         if (!gridPositions.ContainsKey(tileToAdd)) {
             GameObject toInstantiate = floorTiles[Random.Range(0, floorTiles.Length)];
             GameObject instance = Instantiate(toInstantiate, new Vector3(tileToAdd.x, tileToAdd.y, tileToAdd.z), Quaternion.identity) as GameObject;
@@ -77,9 +83,17 @@ public class Board_Generator : MonoBehaviour
                 instance.transform.position = new Vector3(tileToAdd.x, tileToAdd.y + .1f, tileToAdd.z);
                 instance.transform.SetParent(boardHolder);
             }
-            else if(Random.Range(0,25) == 1)
+            else if(tileToAdd.y < 5*maxFloors && Random.Range(0,25) == 1)
             {
                 toInstantiate = ladderTile;
+                instance = Instantiate(toInstantiate) as GameObject;
+                instance.transform.position = new Vector3(tileToAdd.x, tileToAdd.y + .1f, tileToAdd.z);
+                instance.transform.SetParent(boardHolder);
+            }
+            else if(!finalGoalFound && tileToAdd.y == 5*maxFloors && Random.Range(0,10) == 1)
+            {
+                finalGoalFound = true;
+                toInstantiate = goldenTile;
                 instance = Instantiate(toInstantiate) as GameObject;
                 instance.transform.position = new Vector3(tileToAdd.x, tileToAdd.y + .1f, tileToAdd.z);
                 instance.transform.SetParent(boardHolder);

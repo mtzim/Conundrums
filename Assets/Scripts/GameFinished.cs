@@ -14,8 +14,8 @@ public class GameFinished : MonoBehaviour {
     public void finished()
     {       
         whoWon();
-        
-        gameObject.transform.GetChild(1).gameObject.SetActive(true);
+
+        gameObject.transform.GetChild(2).gameObject.SetActive(true);
     }
         
     private void whoWon()

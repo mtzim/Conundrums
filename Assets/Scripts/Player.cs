@@ -30,6 +30,7 @@ public class Player : MonoBehaviour {
     private float groundCheckRadius = 0.2f;
     public AudioClip[] footSteps = new AudioClip[4];
     private AudioSource sounds;
+    private GameObject gameCanvas;
 
     void Awake() {
         DontDestroyOnLoad(transform.gameObject);
@@ -40,6 +41,7 @@ public class Player : MonoBehaviour {
         myAnim = GetComponentInChildren<Animator>();
         steps_can_move = 0;
         sounds = GetComponent<AudioSource>();
+        
     }
 	
 	void Update () {
@@ -133,6 +135,11 @@ public class Player : MonoBehaviour {
                 can_move = false;
                 can_jump = true;
             }
+        }
+        else if (collide.tag == "goal")
+        {
+            gameCanvas = GameObject.Find("Canvas");
+            gameCanvas.GetComponent<GameFinished>().finished();
         }
     }
 
