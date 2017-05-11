@@ -16,8 +16,7 @@ public class DontTouchTheLavaController : MonoBehaviour {
 
     void Start()
     {
-//        InvokeRepeating("SpawnObject", 2, spawnTime);
-        numPlayers = GameObject.Find("Game_Manager").GetComponent<Game_Manager>().num_of_players;
+//        numPlayers = GameObject.Find("Game_Manager").GetComponent<Game_Manager>().num_of_players;
         for (int i = 0; i < numPlayers; i++)
         {
             players[i].SetActive(true);
@@ -46,13 +45,6 @@ public class DontTouchTheLavaController : MonoBehaviour {
         }
     }
 
- /*   void SpawnObject()
-    {
-        float x = Random.Range(-5.5f, 5.5f);
-        float z = Random.Range(4.0f, 6.0f);
-        Instantiate(target, new Vector3(x, 6.5f, z), Quaternion.identity);
-    }
-*/
     private void setText()
     {
 
