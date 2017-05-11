@@ -42,7 +42,7 @@ public class Dice : MonoBehaviour {
             if(i == 19) diceAudio.PlayOneShot(hitSound[3]);
             else if(i >= 10) diceAudio.PlayOneShot(hitSound[2]);
             else if(i >= 1) diceAudio.PlayOneShot(hitSound[1]);
-            else diceAudio.PlayOneShot(hitSound[3]);
+            else diceAudio.PlayOneShot(hitSound[0]);
 
             col.gameObject.GetComponent<Player>().steps_can_move = i+1;
         }
