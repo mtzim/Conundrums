@@ -40,7 +40,7 @@ public class PlatformDescend : MonoBehaviour {
 
     IEnumerator ChooseNextTile()
     {
-        if (platspawntime >= 4.5f)
+        if (platspawntime >= 4.0f)
         {
             platspawntime = platspawntime - 0.5f;
         }
@@ -52,116 +52,61 @@ public class PlatformDescend : MonoBehaviour {
 
         yield return new WaitForSeconds(5.0f);
 
-/*        StartCoroutine("Wait");
-/*    }
-        
-    public void MakeTilesVanish(int tile) {
-        float timer = 0;
-        float timerMax = 3;
-/*
-        
-        timer = 0;
-        if(timer >= timerMax)
+        if (tile == 0)
         {
-*/            if (tile == 0)
-
+            Debug.Log("if 1");
+            //move tiles 1-5
+            for (int i = 1; i <= 5; i++)
             {
-
-                Debug.Log("if 1");
-                //move tiles 1-5
-                for (int i = 1; i <= 5; i++)
-                {
-                    Debug.Log("for 1");
-                    Vector3 initialposition = platforms[i].transform.position;
-                    Debug.Log("position initialized");
-                    platforms[i].transform.position = new Vector3(initialposition.x, initialposition.y - 7, initialposition.z);
-                    Debug.Log("moved down");
-                    /*               timer += Time.deltaTime;
-                                   if (timer > timerMax)
-                                   {
-                                       platforms[i].transform.position = initialposition;
-                                   }
-                   */
-                    //StartCoroutine("Wait");
-                    //yield return new WaitForSeconds(3.0f);
-                    //platforms[i].transform.position = initialposition;
-                }
+                Debug.Log("for 1");
+                Vector3 initialposition = platforms[i].transform.position;
+                Debug.Log("position initialized");
+                platforms[i].transform.position = new Vector3(initialposition.x, initialposition.y - 7, initialposition.z);
+                Debug.Log("moved down");
             }
-            else if (tile == 5)
-            {
-
-                Debug.Log("if 2");
-                //move tiles 0-4
-                for (int i = 0; i <= 4; i++)
-                {
-                    Debug.Log("for 2");
-                    Vector3 initialposition = platforms[i].transform.position;
-                    Debug.Log("position initialized");
-                    platforms[i].transform.position = new Vector3(initialposition.x, initialposition.y - 7, initialposition.z);
-                    Debug.Log("moved down");
-                    /*                timer += Time.deltaTime;
-                                    if (timer > timerMax)
-                                    {
-                                        platforms[i].transform.position = initialposition;
-                                    }
-                    */
-                    //StartCoroutine("Wait");
-                    //yield return new WaitForSeconds(3.0f);
-
-                    //platforms[i].transform.position = initialposition;
-
-                }
-            }
-            else if (0 < tile && tile < 5)
-            {
-
-                Debug.Log("if 3");
-                //move tiles 0<tile<5
-                for (int i = 0; ((i < tile) && (i < tile)) || ((tile < i) && (i < tile)); i++)
-                {
-                    Debug.Log("for 3");
-                    Vector3 initialposition = platforms[i].transform.position;
-                    Debug.Log("position initialized");
-                    platforms[i].transform.position = new Vector3(initialposition.x, initialposition.y - 7, initialposition.z);
-                    Debug.Log("moved down");
-                    /*                timer += Time.deltaTime;
-                                    if (timer > timerMax)
-                                    {
-                                        platforms[i].transform.position = initialposition;
-                                    }
-                    */
-                    //StartCoroutine("Wait");
-                   // yield return new WaitForSeconds(3.0f);
-                   // platforms[i].transform.position = initialposition;
-                }
-                for (int i = 5; i > tile; i--)
-                {
-
-                    Debug.Log("for 3");
-                    Vector3 initialposition = platforms[i].transform.position;
-                    Debug.Log("position initialized");
-                    platforms[i].transform.position = new Vector3(initialposition.x, initialposition.y - 7, initialposition.z);
-                    Debug.Log("moved down");
-                    /*                timer += Time.deltaTime;
-                                    if (timer > timerMax)
-                                    {
-                                        platforms[i].transform.position = initialposition;
-                                    }
-                    */
-                    //StartCoroutine("Wait");
-                    //yield return new WaitForSeconds(3.0f);
-                    //platforms[i].transform.position = initialposition;
-                }
-
-            }
-            yield return new WaitForSeconds(5.0f);
-           for (int i = 0; i <= 5; i++)
-               {
-                    platforms[i].transform.position = initialposition[i];
-               }
-           displaytiles[tile].SetActive(false);
-           StartCoroutine("ChooseNextTile", platspawntime);
         }
+        else if (tile == 5)
+        {
+            Debug.Log("if 2");
+            //move tiles 0-4
+            for (int i = 0; i <= 4; i++)
+            {
+                Debug.Log("for 2");
+                Vector3 initialposition = platforms[i].transform.position;
+                Debug.Log("position initialized");
+                platforms[i].transform.position = new Vector3(initialposition.x, initialposition.y - 7, initialposition.z);
+                Debug.Log("moved down");
+            }
+        }
+        else if (0 < tile && tile < 5)
+        {
+            Debug.Log("if 3");
+            //move tiles 0<tile<5
+            for (int i = 0; i < tile; i++)
+            {
+                Debug.Log("for 3");
+                Vector3 initialposition = platforms[i].transform.position;
+                Debug.Log("position initialized");
+                platforms[i].transform.position = new Vector3(initialposition.x, initialposition.y - 7, initialposition.z);
+                Debug.Log("moved down");
+            }
+            for (int i = 5; i > tile; i--)
+            {
+                Debug.Log("for 3");
+                Vector3 initialposition = platforms[i].transform.position;
+                Debug.Log("position initialized");
+                platforms[i].transform.position = new Vector3(initialposition.x, initialposition.y - 7, initialposition.z);
+                Debug.Log("moved down");
+            }
 
+        }
+        yield return new WaitForSeconds(5.0f);
+        for (int i = 0; i <= 5; i++)
+        {
+            platforms[i].transform.position = initialposition[i];
+        }
+        displaytiles[tile].SetActive(false);
+        StartCoroutine("ChooseNextTile", platspawntime);
+        }
 
 }
