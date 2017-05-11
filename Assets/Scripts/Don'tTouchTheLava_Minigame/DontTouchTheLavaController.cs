@@ -16,7 +16,7 @@ public class DontTouchTheLavaController : MonoBehaviour {
 
     void Start()
     {
-//        numPlayers = GameObject.Find("Game_Manager").GetComponent<Game_Manager>().num_of_players;
+        numPlayers = GameObject.Find("Game_Manager").GetComponent<Game_Manager>().num_of_players;
         for (int i = 0; i < numPlayers; i++)
         {
             players[i].SetActive(true);
@@ -25,7 +25,7 @@ public class DontTouchTheLavaController : MonoBehaviour {
 
     private void Update()
     {
- //       winner();
+        winner();
         if (winnerSplash)
         {
             setText();
@@ -66,7 +66,7 @@ public class DontTouchTheLavaController : MonoBehaviour {
         }
     }
 
- /*   private void winner()
+    private void winner()
     {
         if ((players[0].activeInHierarchy == true) && (players[1].activeInHierarchy == false) &&
             (players[2].activeInHierarchy == false) && (players[3].activeInHierarchy == false) && winnerSplash == false)
@@ -92,5 +92,5 @@ public class DontTouchTheLavaController : MonoBehaviour {
             GameObject.Find("Game_Manager").GetComponent<Game_Manager>().p4Score += 100;
             winnerSplash = true;
         }
-    } */
+    } 
 }
