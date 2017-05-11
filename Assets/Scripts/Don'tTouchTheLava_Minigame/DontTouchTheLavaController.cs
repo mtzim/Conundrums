@@ -13,6 +13,9 @@ public class DontTouchTheLavaController : MonoBehaviour {
     private bool winnerSplash = false;
     private float backToMainGameTimer = 5f;
     public float spawnTime = 0.5f;
+    private AudioSource sound;
+    public AudioClip victorySound;
+    private bool played;
 
 
     void Start()
@@ -22,6 +25,7 @@ public class DontTouchTheLavaController : MonoBehaviour {
         {
             players[i].SetActive(true);
         }
+        sound = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -64,6 +68,12 @@ public class DontTouchTheLavaController : MonoBehaviour {
         {
             winnerText.text = "...YOU ALL DIED!!!";
             winnerMessage.text = "No points for any of you!";
+        }
+        if (!played)
+        {
+            sound.volume = 0.5f;
+            played = true;
+            sound.PlayOneShot(victorySound);
         }
     }
 
