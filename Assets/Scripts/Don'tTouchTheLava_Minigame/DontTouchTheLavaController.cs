@@ -32,11 +32,6 @@ public class DontTouchTheLavaController : MonoBehaviour {
             GameObject.Find("Canvas").transform.GetChild(2).gameObject.SetActive(true);
             CancelInvoke();
 
-            for (int i = 0; i < numPlayers; i++)
-            {
-                players[i].GetComponent<PlayerController>().enabled = false;
-            }
-
             backToMainGameTimer -= Time.deltaTime;
             if (backToMainGameTimer < 0)
             {
