@@ -9,9 +9,32 @@ public class Rolling : MonoBehaviour {
     public int player_num;
     public float max_speed;
     public Roll_Manager manager;
+    private Renderer ballRend;
 
     void Start() {
         rb = GetComponent<Rigidbody>();
+        ballRend = GetComponent<Renderer>();
+
+        Color armorColor;
+        switch (player_num)
+        {
+            case 0:
+                armorColor = new Color(1f, 0f, 0f, 1f);
+                break;
+            case 1:
+                armorColor = new Color(0f, 0f, 1f, 1f);
+                break;
+            case 2:
+                armorColor = new Color(0f, 1f, 0f, 1f);
+                break;
+            case 3:
+                armorColor = new Color(1f, 0.92f, 0.016f, 1f);
+                break;
+            default:
+                armorColor = new Color(1f, 1f, 1f, 1f);
+                break;
+        }
+        ballRend.material.color = armorColor;
     }
 
     void FixedUpdate() {

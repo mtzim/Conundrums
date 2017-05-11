@@ -19,6 +19,7 @@ public class Board_Generator : MonoBehaviour
     public int rows = 5;
     public GameObject[] floorTiles;
     public GameObject[] decorationTiles;
+    public GameObject ladderTile;
     Game_Manager game;
     public Transform boardHolder;
     private Dictionary<Vector3, Tile> gridPositions = new Dictionary<Vector3, Tile>();
@@ -50,7 +51,7 @@ public class Board_Generator : MonoBehaviour
                 if (black_adjacent(instance.transform.position))
                     rend.material.color = Color.white;
                 else
-                    rend.material.color = Color.black;
+                    rend.material.color = Color.grey;
                 gridPositions.Add(new Vector3(x, 0f, z), new Tile(new Vector3(x, 0f, z), rend.material.color));
                 instance.transform.SetParent(boardHolder);
             }
@@ -67,11 +68,18 @@ public class Board_Generator : MonoBehaviour
             if (black_adjacent(instance.transform.position))
                 rend.material.color = Color.white;
             else
-                rend.material.color = Color.black;
+                rend.material.color = Color.grey;
             gridPositions.Add(tileToAdd, new Tile(tileToAdd, rend.material.color));
 
             if (Random.Range(0, 10) == 1) {
                 toInstantiate = decorationTiles[Random.Range(0, decorationTiles.Length)];
+                instance = Instantiate(toInstantiate) as GameObject;
+                instance.transform.position = new Vector3(tileToAdd.x, tileToAdd.y + .1f, tileToAdd.z);
+                instance.transform.SetParent(boardHolder);
+            }
+            else if(Random.Range(0,25) == 1)
+            {
+                toInstantiate = ladderTile;
                 instance = Instantiate(toInstantiate) as GameObject;
                 instance.transform.position = new Vector3(tileToAdd.x, tileToAdd.y + .1f, tileToAdd.z);
                 instance.transform.SetParent(boardHolder);
@@ -112,7 +120,7 @@ public class Board_Generator : MonoBehaviour
                     if (black_adjacent(instance.transform.position))
                         rend.material.color = Color.white;
                     else
-                        rend.material.color = Color.black;
+                        rend.material.color = Color.grey;
                     gridPositions.Add(tileToAdd, new Tile(tileToAdd, rend.material.color));
                     instance.transform.SetParent(boardHolder);
                 }
@@ -135,7 +143,7 @@ public class Board_Generator : MonoBehaviour
             Vector3 neighbor = position + displacements[i];
             if (gridPositions.TryGetValue(neighbor, out color_check))
             {
-                if (color_check.color == Color.black)
+                if (color_check.color == Color.grey)
                 {
                     return true;
                 }
