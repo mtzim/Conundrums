@@ -7,6 +7,7 @@ public class DontTouchTheLavaController : MonoBehaviour {
 
     public GameObject[] players;
     public Text winnerText;
+    public Text winnerMessage;
 
     private int numPlayers;
     private bool winnerSplash = false;
@@ -55,9 +56,14 @@ public class DontTouchTheLavaController : MonoBehaviour {
         {
             winnerText.text = "Winner Player 3!!!";
         }
-        else
+        else if ((players[3].activeInHierarchy == true))
         {
             winnerText.text = "Winner Player 4!!!";
+        }
+        else
+        {
+            winnerText.text = "...YOU ALL DIED!!!";
+            winnerMessage.text = "No points for any of you!";
         }
     }
 
@@ -85,6 +91,11 @@ public class DontTouchTheLavaController : MonoBehaviour {
             (players[2].activeInHierarchy == false) && (players[3].activeInHierarchy == true) && winnerSplash == false)
         {
             GameObject.Find("Game_Manager").GetComponent<Game_Manager>().p4Score += 100;
+            winnerSplash = true;
+        }
+        else if((players[0].activeInHierarchy == false) && (players[1].activeInHierarchy == false) &&
+                (players[2].activeInHierarchy == false) && (players[3].activeInHierarchy == false) && winnerSplash == false)
+        {
             winnerSplash = true;
         }
     } 
