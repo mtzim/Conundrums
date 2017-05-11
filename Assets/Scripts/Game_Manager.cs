@@ -31,7 +31,9 @@ public class Game_Manager : MonoBehaviour {
 
     void Start() {
         music = GetComponent<AudioSource>();
-        num_of_players = GameObject.Find("NumOfPlayers").GetComponent<NumPlayers>().numberOfPlayers;
+        GameObject amtPlayers = GameObject.Find("NumOfPlayers");
+        num_of_players = amtPlayers.GetComponent<NumPlayers>().numberOfPlayers;
+        Destroy(amtPlayers);
         players = new List<GameObject>();
         generator = GetComponent<Board_Generator>();
         GameObject init;
@@ -88,5 +90,15 @@ public class Game_Manager : MonoBehaviour {
             players[i].gameObject.SetActive(false);
         }
         generator.boardHolder.gameObject.SetActive(false);
+    }
+
+    //when returning to main menu via pause menu, make everything active to be destroyed by CleanSlate()
+    public void setAllActive()
+    {
+        for (int i = 0; i < players.Count; i++)
+        {
+            players[i].gameObject.SetActive(true);
+        }
+        generator.boardHolder.gameObject.SetActive(true);
     }
 }
