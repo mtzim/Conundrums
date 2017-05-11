@@ -5,7 +5,7 @@ using UnityEngine;
 public class Dice : MonoBehaviour {
     public Texture[] number = new Texture[20];
     public AudioClip[] hitSound = new AudioClip[4];
-    public AudioSource diceAudio;
+    private AudioSource diceAudio;
     public float speed = 1f;
     public int current_tex;
     private int i = 0;
