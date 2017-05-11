@@ -9,11 +9,14 @@ public class ReturnToMainMenu : MonoBehaviour
     private GameObject[] allGameObjects;
 
     private GameObject gameManager;
+    private GameObject volumeManager;
 
     public void CleanSlate()
     {
         gameManager = GameObject.Find("Game_Manager");
         gameManager.GetComponent<Game_Manager>().setAllActive();
+        volumeManager = GameObject.Find("VolumeManager");
+        volumeManager.SetActive(false);
         allAudioSources = FindObjectsOfType(typeof(AudioSource)) as AudioSource[];
         allGameObjects = FindObjectsOfType(typeof(GameObject)) as GameObject[];
         foreach (AudioSource audioS in allAudioSources)
@@ -24,6 +27,7 @@ public class ReturnToMainMenu : MonoBehaviour
         {
             Destroy(objectG);
         }
+        volumeManager.SetActive(true);
         Time.timeScale = 1; //restores time because pause menu set it to 0
     }
 }
