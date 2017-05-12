@@ -13,6 +13,7 @@ public class DontTouchTheLavaController : MonoBehaviour {
     private bool winnerSplash = false;
     private float backToMainGameTimer = 5f;
     public float spawnTime = 0.5f;
+    private bool allDied = true;
     private AudioSource sound;
     public AudioClip victorySound;
     private bool played;
@@ -51,20 +52,24 @@ public class DontTouchTheLavaController : MonoBehaviour {
         if ((players[0].activeInHierarchy == true))
         {
             winnerText.text = "Winner Player 1!!!";
+            allDied = false;
         }
         else if ((players[1].activeInHierarchy == true))
         {
             winnerText.text = "Winner Player 2!!!";
+            allDied = false;
         }
         else if ((players[2].activeInHierarchy == true))
         {
             winnerText.text = "Winner Player 3!!!";
+            allDied = false;
         }
         else if ((players[3].activeInHierarchy == true))
         {
             winnerText.text = "Winner Player 4!!!";
+            allDied = false;
         }
-        else
+        else if (allDied) //everyone died at the same time
         {
             winnerText.text = "...YOU ALL DIED!!!";
             winnerMessage.text = "No points for any of you!";

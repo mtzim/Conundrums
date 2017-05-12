@@ -138,6 +138,21 @@ public class Player : MonoBehaviour {
         }
         else if (collide.tag == "goal")
         {
+            switch (player_num)
+            {
+                case 0:
+                    GameObject.Find("Game_Manager").GetComponent<Game_Manager>().p1Score += 250;
+                    break;
+                case 1:
+                    GameObject.Find("Game_Manager").GetComponent<Game_Manager>().p2Score += 250;
+                    break;
+                case 2:
+                    GameObject.Find("Game_Manager").GetComponent<Game_Manager>().p3Score += 250;
+                    break;
+                case 3:
+                    GameObject.Find("Game_Manager").GetComponent<Game_Manager>().p4Score += 250;
+                    break;
+            }
             gameCanvas = GameObject.Find("Canvas");
             gameCanvas.GetComponent<GameFinished>().finished();
         }
